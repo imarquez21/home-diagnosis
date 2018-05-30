@@ -3,73 +3,25 @@
 \usepackage{graphicx}
 \graphicspath{{Images/}}
 
-
 \begin{document}
-\title{vSDN Controller}
-\subtitle{SDN Controller as a Virtual Network Function}
+\title{Home Diagnosis Paper}
+\subtitle{Active Measurement for Wi-Fi}
 \author{Israel M\'{a}rquez Salinas \\Universit\'{e} Pierre \& Marie Curie \\s.marquez.israel@gmail.com}
 \maketitle
 
-
 \begin{abstract}
-	Network Function Virtualization (NFV) can be considered today the enabler to open a wide range of improvements in networking. The pursue of more resilient, robust and flexible networks, from operational and management perspectives, have led to technologies such as Software Delivery Networks (SDN) and cloud computing. The strengths and opportunity areas of these three technologies have the potential to improve the delivery, deployment and management of current networks.
-	In this paper we will briefly describe the key features of each of these technologies, we will focus on the strong relationship between SDN and NFV. We will also describe how virtualizing an SDN controller and embedding it into a NFVI (Network Function Virtualization Infrastructure) can simplify and add value to network management and flexibility.
 	
 \end{abstract}
 
+\section{introduction}\label{Introduction}
 
-\section{introduction}\label{introduction}
-Network technologies have evolved significantly in the past decade delivering approaches striving to achieve flexible but robust networks. Nowadays SDN allows centralized but granular management due to its key characteristic of decoupling control from data plane \cite{xia2015_SDN_survey}. The second main paradigm is cloud computing. Cloud computing is a fundamental pillar to which NFV resembles to, in fact it can be considered to be the core of its principle. Cloud computing enables the possibility of sharing underutilized resources among different services and applications within an IT infrastructure, in other words it enables virtualization \cite{doherty2016sdn}.
-These three network technologies, approaches and paradigms are more collaborative than competitive among themselves \cite{mijumbi2016_NFV_stateofart}. They can collaborate to reach the goals of  improved performance, scalability and management in networks; this paper seeks to make this collaboration clearer with emphasis on NFV and SDN. %\subsection{Problem}
-The problem area in which we strive for a solution is related to the deployment of an SDN controller as a virtual network function.
-The critical points are associated with distributed management and scalability as described by the works of Mijumbi et al. \cite{mijumbi2016_NFV_stateofart}.
-%\subsection{Challenges and Results}
-The challenges faced in order to achieve SDN controllers being deployed as virtual network functions are related to performance. To be more specific the two main pain points are associated to computational power and latency \cite{nfv2014etsi}. From one end, servers must be able to host virtual functions without full knowledge of the type of functions being hosted and deployed on them. On the other end, network functions running on industry-standard servers need to perform as reliable as on dedicated servers, and at the same time offer the option of being portable among servers. 
-The solution analyzed in this paper consists on the concept of virtual SDN controllers. Nowadays there are proprietary virtual controllers for specific network functions. This idea is the basis of turning network functions into virtual network functions. It is important to mention that not all network functions are eligible to be virtualized as described in the work by Mijumbi et al.  \cite{mijumbi2016_NFV_stateofart}. 
-The benefits of deploying an SDN controller as a virtual function are well known. For example, it will be possible to deploy the applications of an SDN controller, such as load balancing, traffic monitoring and control, as network functions \cite{mijumbi2016_NFV_stateofart}. The SDN controller will not only become more flexible and manageable, but also reliable. It will become more reliable as its inner applications and itself will be logically centralized but physically distributed. A derived financial benefit will be OPEX (Operational Expenses) reduction of networks deployment and management \cite{mijumbi2016_NFV_stateofart}. 
-We approach this challenge from a different perspective from previous works in the sense that we focus on SDN being included within the virtual infrastructure. In previous works it was network functions being included as pieces of SDNs \cite{gember2014opennf}.
-\section{Virtual SDN Controller}\label{NFV_Fundamentals}
+\section{state of art}\label{State of Art}
 
-The key idea of NFV relies on virtualizing network functions and deploying them on industry-standard servers. This concept resembles to what cloud-computing does in which a software is virtualized and then deployed among servers. The key and most important difference relies on the fact in which a network function is required to work in a timely manner. 
-\newpage
-\subsection{VFN Components}
-A firewall is an example of a network function in which its performance is important to properly monitor and control incoming and outgoing traffic of the network. Our goal in this paper conceives the SDN controller and its inner components as virtual network functions. By implementing this approach it will be possible to deploy them within a virtual infrastructure and to be managed by the Management and Orchestration (MANO) component of NFV. In summary the three main components to build upon NFV, as described in standard \cite{nfv2014etsi}, are:
-\begin{itemize}
-	\item Virtual Network Functions - Network functions eligible to be virtualized and deployed within the virtual infrastructure.
-	\item Management and Orchestration - Provides the means to provision and configure virtual network functions and the infrastructure virtual functions are deployed on.
-	\item Network Function Virtualization Infrastructure - The duo in which hardware and software collaborate to support the environment in which NFVs are deployed.
-	
-\end{itemize}
+\section{Passive vs Active}\label{Passive vs Active}
 
-\noindent These three main components are the pillars in which the solution of virtual SDN controller will be described.
+\section{Related Work}\label{Related Work}
 
-\subsection{SDN Component}\label{VSDN_Controller}
-
-The paradigm of SDN has been of major importance in the last decade and it has resulted in several implementations until today \cite{jarschel2014interfaces_SDN}. The main characteristic of SDN is the ability of decoupling data from control plane. This helps to address the complication of network management complexity. The control plane is eligible to be programmed as per network, user or business needs making network management more flexible \cite{jarschel2014interfaces_SDN}. The ability to logically centralize the control plane is a second major benefit. The control plane can be centrally managed by an SDN controller. The SDN controller can be logically centralized but physically distributed, leading to a more robust and resilient network. In short, SDN decouples data from control plane, while NFV decouples functions from specific hardware. Based on this premise they can collaborate together to deliver a virtual SDN controller.
-
-Nowadays there exist SDN controllers being virtualized and deployed. The virtual SDN controllers have made possible network programmability which extends and creates new services within the SDN controller \cite{mijumbi2016_NFV_stateofart}. The main principle behind the virtual SDN controller is to abstract the SDN controller into a function to be virtualized in industry-standard servers. The offering of SDN controller as software is currently available \cite{doherty2016sdn}. The factor to highlight is the ability for it to be deployed as it is meant to be, that is to say, logically centralized and physically distributed. Current implementations continue to logically \emph{and} physically centralize the SDN controller limiting its full potential and making of it a potential single-point-of-failure (SPOC).
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=8cm]{vSDN_DC}
-	\caption{Multiple instances of a vSDN Controller within a data center serving multiple sites.}
-	\label{fig:vSDN_Controller_DC}
-\end{figure}
-
-With a virtual SDN controller the risk of making it a potential single-point of failure is reduced. The ability to virtualize the SDN controller and distribute its multiple virtual instances adds robustness to its functionality. Figure \ref{fig:vSDN_Controller_DC} illustrates the concept of deploying the vSDN (virtual SDN) controller instances within a DC (data center) being managed by a Virtual Infrastructure Manger, MANO. Several sites can benefit from the DC services being managed by the MANO and new services (network functions) can be added based upon customer or business needs. The vSDN controller can allow to create a dynamic service catalog with the benefits of reduced deployment time and service agility. This is a derived benefit as the costs of deploying physical servers is taken out from the equation \cite{mijumbi2016_NFV_stateofart}, hence reducing operation costs. 
-It is important to mention the factors influencing the wide adoption of the vSDN controller today. Performance at carrier level has been one of the main items preventing the wide adoption of vSDN controller. As described in the work by R. Kawashima et al. \cite{kawashima2012_vnfc}, when it comes to distributed management for SDN it is required to improve. In their work they propose a distributed packet processing approach among different NF instances to consolidate the control plane \cite{kawashima2012_vnfc}, with this the distributed deployment becomes more feasible.
-The solution of making the SDN controller a virtual function offers major benefits, at the same time it presents challenges never faced before. We consider necessary to bring awareness on the benefits of implementing a vSDN controller in order to motivate further research on the challenges being faced to widely implement vSDN controllers.
-\newpage
-\section{Related Work}
-We have developed the ideas described in this paper based on the work  by Mijumbi et al. \cite{mijumbi2016_NFV_stateofart}. They elaborate and provide a recent and thorough state of art for NFV. In their work they also approach and describe the current and expected challenges for NFV. 
-We have elaborated and delved further on one of the challenges mentioned in their work, Controller Design. We have approached the challenge focusing on SDN components being part of a Network Virtual Infrastructure. To be more specific, turning the SDN controller into a virtual function and embedding it into a virtual infrastructure. The difference in our work is the emphasis we make on analyzing the benefits of turning the SDN controller into a virtual function. In order to bring SDN insight to our paper we make reference to the work of Fei Hu et al. \cite{hu2014_SDN_survey}. Their work is a survey on SDN and sets a context to build virtual network functions concepts along SDN paradigm. Thanks to their work it has been possible to review the fundamental and key characteristics of SDN architecture. From their work we have extracted two main drivers out of the five main components of SDN architecture. These have been extracted as we work with them to stress the relationship with NFV. These components are flexible-agile and centrally managed \cite{jarschel2014interfaces_SDN}.
-We have used the supportive role of \emph{cloud-computing} and its relationship with virtualization described in \cite{mijumbi2016_NFV_stateofart} to broaden the scope of VNF collaborating with trending networking paradigms. The difference in our paper relies on the fact that we outline cloud-computing as supportive technology instead of being a vital element for NFV. We examine cloud-computing as support technology to NFV as it is possible to run NFs in dedicated hardware and therefore virtualization is not required. The core of the idea relies on the ability for NFs to be able to run as virtualized instances on industry standard servers, this is the point in which we make emphasis based on \cite{mijumbi2016_NFV_stateofart}.
-Related works present the relationship between SDN and NFV and focus on NFV being included within SDN. There are works in which the inclusion of NFV into SDN have been examined; \cite{kawashima2012_vnfc}, \cite{gember2014opennf}. These works propose a control plane capable of redistributing packet processing among NF instances.
-In this paper we examine the idea of SDN controller as a virtual network function. We consider this of paramount importance as currently vendor-specific VNF solutions are being developed at a fast pace. This can lead to an scenario in which the development of vendor-specific solutions influence the standardization of VNF up to a point in which achieving \emph{VNF running on industry standard hardware} becomes difficult.
-
-\section{Conclusion}
-
-To conclude, VNF which closely associates to cloud-computing serves as the platform on which SDN can be supported. SDN, on the other side, offers the manageability, programmability and automation for the network control and data plane. The vSDN controller can help to minimize the risk of it being a single-point-of-failure, to add robustness and flexibility to the network management. There is still room for improvement and research in the area of vSDN controller performance at a carrier level. With this paper we have highlighted the benefits of a vSDN controller deployed within a virtual infrastructure and hope it serves for further research in this area.
+\section{Conclusion}\label{Conclusion}
 
 \bibliography{biblio}
 \bibliographystyle{plain}
