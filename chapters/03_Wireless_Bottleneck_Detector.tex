@@ -1,0 +1,23 @@
+\section{Wireless Bottleneck Detector}\label{Wireless Bottleneck Detector}
+
+In this section we describe the tool we have created.
+
+It is a \emph{custom} version of Ping in \emph{GoLang}. This customer version allow us to define a probing rate, send probes in batches and set an inter-space between probes and batches.
+
+Explain we have used exponential distribution to send batches. We have chosen exponential as Poisson process is related to exponential arrival times. We chose Poisson because sampling a Poisson process results in Poisson process, which allows to keep the same Poisson process even after sampling.
+
+The sampling technique we used is Bernoulli, which is a type of Poisson sampling. In Bernoulli sampling all the observation in the data set have the same probability to become or not to become part of the resulting sampling set.
+
+We varied the probability to be part of the sampling from 10\% to 90\%. To choose the sample which resembles the most to our original data set we worked with \emph{Two Sample Kolmogorov-Smirnov} Test
+
+Our results are:
+
+\textbf{Include chart with the results of similarity test.}
+
+In the plot we can see that with a probability of 50\% we overlap our original data set.
+
+\textbf{Include Plot of ECDF of original data set and sample}
+
+We chose 50\% as it results on an overlap with the original data set.
+
+We can also describe that the p-value is close to 1 and the D-Value, which is the KS statistic is low. KS Low value is pursed as it means distance between the two ECDFs is small, meaning they are close to each other, hence more similar.

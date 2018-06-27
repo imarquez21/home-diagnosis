@@ -1,0 +1,66 @@
+\section{Evaluation Method}\label{Evaluation_Method}
+
+\textbf{Note: Ask on this section, as we might have already described it in the previous section.}
+
+\subsection{Setup}
+
+Here we describe the setup we have in our lab and the test bed we have used in Orbit.
+
+We have worked with two setup, initially our office lab and then Orbit.
+
+\subsection*{In-lab}
+
+In our lab we have worked with a Raspberry Pi 3 running Raspbian GNU/Linux 8 (jessie).
+Wireless Access Point TP-Link AC1750.
+Dell Laptop Inspiron with Wireless Driver -- \emph{Driver Version}
+List Protocols supported by the Wireless card 802.11 a/b/g/n/ac
+Laptop running Ubuntu 16.04.4 LTS (Xenial Xerus)
+
+\subsection*{Orbit}
+
+We used three nodes with.
+Atheros 9k and 5k wireless cards.
+
+We configure a node to work as a Wireless station, another as an AP and finally a third one as a wired client from where the pings were issued.
+
+The third node working as a wired client plays a similar role as the Pi in our In-lab setup.
+
+
+\subsection{Evaluation method}
+
+Here we explain how we ran the experiments.
+
+We can set a "cost" to our experiments based on overhead at the following points.
+
+\begin{itemize}
+	\item Network
+	\item Device
+	\item Router
+\end{itemize}
+
+
+We can include the accuracy of our methods depending on where are we setting our Vantage point.
+
+In our lab we placed the laptop and the Pi close to each other, a distance smaller than 5 m. We connected to the 5GHz band under 802.11n protocol.
+
+The first set of experiments consisted in progressively adding TCP sessions. The goal was to perceive how was RTT changed with more TCP sessions. We expected to see an increase as more TCP session were added.
+
+Results matched our expectation and saw an increase in average RTT as more TCP session were added.
+
+\textbf{Include plot in which we have the CDF of RTTs vs TCP Streams}
+
+The next set of experiments were ran with the goal of finding a suitable probing rate. The ideal case is to probe frequent enough to have a "good" sense of the network without adding overhead and disrupting the Wireless Network.
+
+We issued pings in sessions of 10 min at a ping rate of 100msec, initially, we call this aggressive scenario. The rate was defined to be 100msec to set our baseline from which we derived our sampling to obtain a suitable probing rate. The main goal is to achieve a rate which is not as aggressive as probing every 100msec.
+
+After completing our sample analysis, we define it to be 200msec and we proceed to run test in Orbit where we can modify parameters as attenuation.
+
+Orbit lab allow to modify attenuation from 0 dB to 30 dB. We perceived an increase in average RTT and loss rate from 27dB to 29dB. (At 30 dB link is unusable).
+
+The results are show in the following plots.
+
+\textbf{Include Plots with Avg RTTs and Loss Rate results from Orbit}
+
+
+
+
