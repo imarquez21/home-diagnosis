@@ -87,7 +87,22 @@ We list the different vantage points from where the metrics have been collected.
 Note - From what I recall most of metrics have been collected from APs, which means we need to have access to the AP.
 
 \begin{itemize}
-	\item Station
+	\item Station - UE User Equipment 
+	\begin{itemize}
+		\item \textbf{Bandwidth} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know \emph{Cite: User Traffic in Home Wireless Networks} that even with similar Wireless conditions devices can experience different bandwidth and bitrate. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
+		\item \textbf{PHY Tx Rate} - We will extract this metric from the sniffer close to the AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}.
+		\item \textbf{RSSI} - Measure to be collected at the client side. Based on the location of the client device, obstacles in the path, contention and interference RSSI can be impacted. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
+		\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement.
+		
+	\end{itemize}
+	
 	\item Access Point
-	\item Server
+	\begin{itemize}
+		\item \textbf{Busy Time} - We will measure it from the AP as it is the one servicing clients in a specific channel (channels), meaning that clients will be connecting to that serving channel. Knowing that the channel being used is busy most of the time can lead to the corrective action of switching to a less busy channel. Reason of why channel has a high busy time can eb associated to interference or congestion. The busy time is made of two major components, Wi-Fi (congestion) and non-Wi-Fi (interference).
+		\item With a second NIC and setting up Airshark extension can help to extract more granular metrics on what is Wi-Fi and Non-Wi-Fi busy time.
+		\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement.
+		
+	\end{itemize}
+	
+	%\item Server
 \end{itemize}
