@@ -10,18 +10,74 @@ Here we list the metrics found in literature and list them under the two familie
 
 \subsection*{Active}
 
+Active measurements most tangible characteristic relies on the injection of traffic in the context to be measured. The traffic injection is mostly composed by probe packets. In other words additional traffic is triggered in order to extract metrics from the setting to be evaluated.
+%In our case the two active metrics we will collect are outlined as follow.
+
+\textbf{Pros}
 \begin{itemize}
-	\item One-Way Delay
-	\item Round Trip Time
-	\item More
+	\item Full ownership of the network is not required.
+	\item They do not require large space to store data collected as generally, probe packets are small.
+	\item Privacy concerns as minimal as probe packet used to measure are made of random data which has no sensitive information.
+\end{itemize}
+	
+
+\textbf{Cons}
+\begin{itemize}
+	\item They add overhead to the network as probe traffic is generated to measure.
+	\item The very same probe packets being used to measure the performance can cause degradation of the network leading to biased results.
+	\item They can only capture an instant of the network condition. If problem to be characterized is extended in time, active measurement might not measure it accurately.
+\end{itemize}
+
+\subsection*{Active Metrics}
+
+\begin{itemize}
+	%\item One-Way Delay
+	\item Round Trip Time\newline
+	This metric takes into account the time it takes for a probe to leave the source, reach the destination and come back to the source. 
+	\item The ping tool being used has been customized to be able to send trains of probes.
+	\item The tool allows to define a probing rate based on a Poisson process, we have chosen a Poisson process as we sample from it. Sampling from a Poisson process leads to another Poisson process.
+	\item Our sampling rate has been defined to be 200msec based on sampling and similarity test results.
+	
+	\item Bandwidth
+	The amount of data that can be sent or received from or by a station will allow to identify how far are we from the PHY data rate. In practice the bandwidth is less than the PHY rate at which the station has connected to in 802.11 protocol PHY rate.
+	\item In other words this measurement can help to identify how efficiently is the medium being used.
+	
+	
 \end{itemize}
 
 \subsection*{Passive}
 
+Passive measurements rely on a listening approach, the passive instrument sits in a location within the network and listens to the traffic. 
+
+\textbf{Pros}
 \begin{itemize}
-	\item Rate
-	\item RSSI
-	\item More
+	\item No extra traffic is generated to collect metrics.
+	\item They are better suited to capture long-term behavior as they can listen for an extended time frame.
+	\item Due their ability to collect more data, the accuracy of measurement is higher than active.
+	\item They do not introduce contention
+
+\end{itemize}
+
+
+\textbf{Cons}
+\begin{itemize}
+	\item Data collected by them can be large. Large storage can be required to store data collected from Passive measurements.
+	\item Access to devices within the network is required in order to place the passive instrument.
+	
+\end{itemize}
+
+\subsection*{Passive Metrics}
+
+\begin{itemize}
+	\item Bit Rate
+	The speed at which the device is connected to. Bitrate adaptation techniques are triggered based on channel conditions. Therefore this metric can assist to estimate the channel conditions.
+	\item RSSI - Received Signal Strength Indicator
+	The power at which the signal is being received by the device. Depending on the the type of traffic specific threshold can be defined for it. For example, for VoIP the min value for it is -68 dBm. What is consider a strong signal level is -40 dBm.
+	\item Busy Time
+	This metric tell us how busy was the channel, in other words if the channel the device is working on is close to 100\% it can be due to contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
+	\item PHY Tx Rate (Bit Rate)
+	The rate at which without medium access control, error correction or scheduling events the device is expected to operate with. As described before the PHY rate is higher than the bandwidth.
+	\emph{The PHY rate can be obtained from a radio tap, checking the 802.11 header and check the precise bit rate at which that specific frame was transmitted.}
 \end{itemize}
 
 \subsection{Where do we collect them?}
