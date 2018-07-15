@@ -9,6 +9,17 @@ Explain we have used exponential distribution to send batches. We have chosen ex
 The sampling technique we used is Bernoulli, which is a type of Poisson sampling. In Bernoulli sampling all the observation in the data set have the same probability to become or not to become part of the resulting sampling set.
 
 We varied the probability to be part of the sampling from 10\% to 90\%. To choose the sample which resembles the most to our original data set we worked with \emph{Two Sample Kolmogorov-Smirnov} Test
+\\
+\\
+\textbf{Main characteristics of Ping Tool.}
+\begin{itemize}
+	\item The ping tool being used has been customized to be able to send trains of probes.
+	\item The tool allows to define a probing rate based on a Poisson process, we have chosen a Poisson process as we sample from it. Sampling from a Poisson process leads to another Poisson process.
+	\item Our sampling rate has been defined to be 200 msec based on sampling and similarity test results.
+\end{itemize}
+
+
+
 
 Our results are:
 

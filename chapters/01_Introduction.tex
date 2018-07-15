@@ -1,27 +1,37 @@
 \section{Introduction}\label{Introduction}
 
-\textbf{Main Ideas for the Introduction - Tell a Story}
 
+Networks today have evolved significantly, one of the most tangible examples of this evolution are Wireless Network. In this paper we focus on 802.11 WLANs. These WLANs are common in offices, manufacturing plants, homes and many more premises. Home WLANs have brought their benefits and challenges into the home. One of the challenges of Home WLAN comes from the wide diversity of devices inside the home. In one end we have the 802.11 devices, also know as WiFi devices, and in other hand the non-Wifi devices. The WiFi devices variety ranges from handheld devices with limited resources, to complex, resourceful entertainment systems. All of these 802.11 devices will experience a different performance of the home WLAN. Whilst a gaming console can perceive the home WLAN as acceptable, a resource-constrained hand-held might perceive it as poor. This difference is derived from the characteristics of each device, such as Wireless card adapter. The second set of devices are non-Wifi. The non-WiFi devices use the same medium as WiFi and can create conditions leading to poor Home WLAN experience. Examples of such devices are microwave ovens, cordless phones, and bluetooth devices.
+
+Even though Home WLANs are the preferred way to access Internet at home \cite{predicting_effect_Home_Wifi} a robust mechanism to detect complications in Home WLAN has not been defined yet. Instrumenting a tool or mechanism to identify Home WLANs complications is challenging due to several reasons. The most critical one is the Wireless medium itself. Wireless by nature is unreliable and variable making hard to accurately "catch" a problem \cite{predicting_effect_Home_Wifi}. Interference from non-WiFi devices can be experienced at any time and the length of these episodes can vary. The diversity in terms of WiFi devices characteristics is another factor to consider. A handhled device and a laptop placed at almost the same distance from the can experience Wireless performance differently. This difference, as mentioned before can be derived from the characteristics of each device, battery, Wireless adapter, operating system and more.
+
+A tool to identify home WLAN issues can help to mitigate pain points end users and ISPs suffer today. Previous work has pointed out that end users tend to reach out to their ISPs and hold them  responsible for poor home network performance \cite{passive_wifi_capacity_estimation}. In most of the cases Home WLAN is the root cause of poor home network performance. Both parties, end users and ISPs have limitations to tell if the Home WLAN is the root cause. From one side end users have visibility from within the home WLAN but most of lack the knowledge to troubleshoot it. On the other side, ISPs have the knowledge to troubleshoot WLANs but lack visibility from within the home WLAN. This is where our motivation to develop a tool to help to identify home WLANs comes from.
+
+In this paper we present our tool which main contribution is to detect Wireless impairments in Home WLANs. Our tool relies on two methodologies to measure network performance, active and passive. From the passive approach we collect 802.11 metrics from the Wireless client and the Access Point. These metrics helps us to get a sense of what are the client and AP perceiving from the home WLAN. From an active approach we trigger bandwidth measurement and RTT using a Wired client. To measure bandwidth we use \emph{iPerf}. The Wireless client is setup as iPerf client and a wired client connected to the AP plays the role of the iPerf server. In a similar approach we conduct RTT measurements, the wired client pings the Wireless client. The tool we use to issue the pings is a custom tool developed in \emph{GoLang} which allows us to include custom parameters unavailable in the standard ping tool. These metrics have been collected under different  environment conditions. Environment conditions have changed using attenuation, congestion and noise. Further details of the design of our tool will be described in section \ref{Wireless Bottleneck Detector}. 
+
+
+\textbf{Main Ideas for the Introduction - Tell a Story}
 \begin{enumerate}
+	
 	\item Networks have evolved significantly.
 	\item Wireless Networks are tangible evidence of it.
 	\item Wireless Networks are available almost everywhere.
 	\item Wireless has made its way into homes, bringing its benefits and challenges.
-	\item Wireless Networks are complex because Wireless nature is unstable, is a share medium.
+	\item Wireless Networks are complex because Wireless nature is unstable, it is a shared medium.
 	\item Even Wireless experts face challenges while troubleshooting issues.
 	\item User watches a video or plays on his Wireless devices and suddenly the video or application stops.
 	\item Users gets angry as he does not know what can be causing it.
 	\item The first reaction is to call their ISP seeking for a solution.
 	\item ISP check his side, settings are in order from his end.
-	\item Users states that there is clearly a problem and he wants help as he is paying for a good service.
-	\item ISP has limited view into what can be the cause inside the Home Networks.
+	\item Users state that there is clearly a problem and they want help as they are paying for a good service.
+	\item ISP has limited view into the Home Wireless.
 	\item Both ends get "stressed" as they both face limitations.
-	\item Users lack knowledge and tools to help him confirm his Home Wireless is the problem or not.
+	\item Users lack knowledge and tools to help them confirm their Home Wireless is the problem or not.
 	\item User, in the other hand, has access to the home Wireless Network.
-	\item ISP lack the visibility and tools to troubleshoot user's Home Wireless.
-	\item ISP, in the other hand, has the knowledge to identify what based on metrics if the Wireless Networks is the cause of the problem.
+	\item ISPs lack the visibility and tools to troubleshoot user's Home Wireless.
+	\item ISPs, in the other hand, have the knowledge to identify based on metrics if the Wireless Networks is the cause of the problem.
 	\item As a final result User might end up switching ISP or content provider.
-	\item Switching ISP or content provider would not be a final fix as they root cause can be located in the Home Wireless.
+	\item Switching ISP or content provider would not be a final fix as the root cause can be located in the Home Wireless. \cite{hostview}
 \end{enumerate}
 
 \textbf{Motivation - Why do we want to create a Detector}
@@ -38,7 +48,7 @@
 	\item To assist users to confirm if home Wireless is the root cause or not
 	\item If the tool provides evidence home Wireless i not the root cause they can go to their ISP and ask for assistance.
 	\item To help ISP to have tools to identify if the home Wireless is the problem
-	\item If the ISPs have the evidence Wireless is the problem, then they can instruct user that the root cause is within the Home Wireless.
+	\item If the ISPs have the evidence Wireless is the problem, then they can instruct user that the root cause is within the Home Wireless. \cite{WLAN_Troubleshooting}
 \end{enumerate}
 
 

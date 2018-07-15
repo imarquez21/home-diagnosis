@@ -10,21 +10,22 @@ Here we list the metrics found in literature and list them under the two familie
 
 \subsection*{Active}
 
-Active measurements most tangible characteristic relies on the injection of traffic in the context to be measured. The traffic injection is mostly composed by probe packets. In other words additional traffic is triggered in order to extract metrics from the setting to be evaluated.
-%In our case the two active metrics we will collect are outlined as follow.
+Active measurement techniques are mainly characterized by its ability to capture the state of the network in real-time. In other words, active measurement can help to identify a condition when is present in the network. This characteristic is different from passive network which can be considered historical. Active measurements are also characterized by the use of probes. Probe packet are used to measure the state of the network. For example, ping, relies on ICMP request and replies to compute the Round-Trip Time from one host to another. An important consideration to bear  in mind when using active measurement techniques are the probes. It is important to define the size of the probes and how frequent are they sent into the network. Probes can add overhead to the network if their size is high compared to the capacity of the path or if they are sent too frequent. If probing is causing overhead to the network, the condition we want to measure will be caused by the same tool we are using to measure. Probing without the proper due diligence can lead to network degradation and/or biased measurements. In the following bullet points we outline the pros and cons of active measurement techniques.
 
 \textbf{Pros}
 \begin{itemize}
 	\item Full ownership of the network is not required.
 	\item They do not require large space to store data collected as generally, probe packets are small.
-	\item Privacy concerns as minimal as probe packet used to measure are made of random data which has no sensitive information.
+	\item Privacy concerns are minimal as probe packet used to measure are made of random data which has no sensitive information.
+	\item Useful to get the state of the network in real-time.
 \end{itemize}
 	
 
 \textbf{Cons}
 \begin{itemize}
-	\item They add overhead to the network as probe traffic is generated to measure.
-	\item The very same probe packets being used to measure the performance can cause degradation of the network leading to biased results.
+	\item They add overhead to the network as probe traffic is generated to conduct measurements.
+	\item The very same probe packets being used to measure network conditions can cause network degradation.
+	\item Biased results can be obtained if probing is conducted without due diligence of network conditions.
 	\item They can only capture an instant of the network condition. If problem to be characterized is extended in time, active measurement might not measure it accurately.
 \end{itemize}
 
@@ -32,52 +33,69 @@ Active measurements most tangible characteristic relies on the injection of traf
 
 \begin{itemize}
 	%\item One-Way Delay
-	\item Round Trip Time\newline
-	This metric takes into account the time it takes for a probe to leave the source, reach the destination and come back to the source. 
-	\item The ping tool being used has been customized to be able to send trains of probes.
-	\item The tool allows to define a probing rate based on a Poisson process, we have chosen a Poisson process as we sample from it. Sampling from a Poisson process leads to another Poisson process.
-	\item Our sampling rate has been defined to be 200msec based on sampling and similarity test results.
+	\item \textbf{Round Trip Time}
+	\begin{itemize}
+		\item This metric takes into account the time it takes for a probe to leave the source, reach the destination and come back to the source. 
+	\end{itemize}
 	
-	\item Bandwidth
-	The amount of data that can be sent or received from or by a station will allow to identify how far are we from the PHY data rate. In practice the bandwidth is less than the PHY rate at which the station has connected to in 802.11 protocol PHY rate.
-	\item In other words this measurement can help to identify how efficiently is the medium being used.
-	
-	
+	\item \textbf{Bandwidth}
+	\begin{itemize}
+		\item The amount of data that can be sent or received from or by a station will allow to identify how far are we from the PHY data rate. In practice the bandwidth is less than the PHY rate at which the station has connected to in 802.11 protocol PHY rate.
+		\item In other words this measurement can help to identify how efficiently is the medium being used.
+	\end{itemize}
+	\item \textbf{Losses}
+	\begin{itemize}
+		\item Losses from Ping statistic will allow us to identify the rate loss during the experiment window.
+		\item \emph{Review Code changes to be made in Go in order to add a second queued.}
+	\end{itemize}
 \end{itemize}
 
 \subsection*{Passive}
 
-Passive measurements rely on a listening approach, the passive instrument sits in a location within the network and listens to the traffic. 
+Passive measurement techniques rely on a listening approach. The instrument conducting passive measurements in the network sits in a specific location along the path and records the metrics of interest. The instrument can be a component of then network itself, like a router, or can be a device devoted to measure, like a Wireless sniffer. An important different between active and passive techniques, is that passive tend to be historical. In an historical sense, passive measurements are more reliable to characterize a network problem which cover an extended time-frame. Active measurements are suitable to pinpoint a problem in the instant it happens, nevertheless they lack accuracy to characterize problems which cover and extended time-frame. Another difference with active measurements is that passive measurements do not trigger probes. Overhead within the network path caused by probe packets is not present with active measurement. When implementing passive measurements it is important to consider the resources of the measuring device. The device might require to have enough storage to store the data being collected. In a similar way, the computing capability of the device an be required to be high depending on the speed of the link being measured. A Gigabit link in a Core Router will produce significantly more data than an 100Mbps Ethernet link of an access switch. In our tool we have passive tools such implemented Wireless Sniffer and WiFi metrics collection from Wireless client and Access Point.
+Outlined in the following list a high level summary of the Pros and Cons of passive measurement techniques.
 
 \textbf{Pros}
 \begin{itemize}
-	\item No extra traffic is generated to collect metrics.
-	\item They are better suited to capture long-term behavior as they can listen for an extended time frame.
-	\item Due their ability to collect more data, the accuracy of measurement is higher than active.
-	\item They do not introduce contention
+	\item No extra traffic is generated to collect metrics, risk of causing overhead is minimized.
+	\item They are better suited to accurately characterize network problems which cover an extended time frame.
+	\item In general they are able to collect large dataset leading to increased accuracy of network complications.
 
 \end{itemize}
 
 
 \textbf{Cons}
 \begin{itemize}
-	\item Data collected by them can be large. Large storage can be required to store data collected from Passive measurements.
+	\item Data collected by them can be large. Large storage can be required to store data collected.
 	\item Access to devices within the network is required in order to place the passive instrument.
+	\item Measuring device might require to have computational power depending on the link being monitored and the granularity of data pursued.
+	\item They are reactive, findings of network problem can be obtained after data has been analyzed.
 	
 \end{itemize}
 
 \subsection*{Passive Metrics}
 
 \begin{itemize}
-	\item Bit Rate
-	The speed at which the device is connected to. Bitrate adaptation techniques are triggered based on channel conditions. Therefore this metric can assist to estimate the channel conditions.
-	\item RSSI - Received Signal Strength Indicator
-	The power at which the signal is being received by the device. Depending on the the type of traffic specific threshold can be defined for it. For example, for VoIP the min value for it is -68 dBm. What is consider a strong signal level is -40 dBm.
-	\item Busy Time
-	This metric tell us how busy was the channel, in other words if the channel the device is working on is close to 100\% it can be due to contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
-	\item PHY Tx Rate (Bit Rate)
-	The rate at which without medium access control, error correction or scheduling events the device is expected to operate with. As described before the PHY rate is higher than the bandwidth.
-	\emph{The PHY rate can be obtained from a radio tap, checking the 802.11 header and check the precise bit rate at which that specific frame was transmitted.}
+	%\item \textbf{PHY Tx Rate}
+	%\begin{itemize}
+	%	\item The speed at which the device is connected to. Bitrate adaptation techniques are triggered based on channel conditions. Therefore this metric can assist to estimate the channel conditions.
+	%\end{itemize}
+	\item \textbf{RSSI - Received Signal Strength Indicator}
+	\begin{itemize}
+		\item The power at which the signal is being received by the device. Depending on the the type of traffic specific threshold can be defined for it. For example, for VoIP the min value for it is -68 dBm. What is consider a strong signal level is -40 dBm.
+	\end{itemize}
+
+	\item \textbf{Busy Time}
+	\begin{itemize}
+		\item This metric can tell us how busy was the channel, in other words if the channel the device is working on is close to 100\% it can be due to contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
+	\end{itemize}
+	
+	\item \textbf{PHY Tx Rate}
+	\begin{itemize}
+		\item 	The rate at which without medium access control, error correction or scheduling events the device is expected to operate with.
+		\emph{The PHY rate can be obtained from a radio tap, checking the 802.11 header and check the precise bit rate at which that specific frame was transmitted.}
+	\end{itemize}
+
 \end{itemize}
 
 \subsection{Where do we collect them?}
@@ -89,7 +107,7 @@ Note - From what I recall most of metrics have been collected from APs, which me
 \begin{itemize}
 	\item Station - UE User Equipment 
 	\begin{itemize}
-		\item \textbf{Bandwidth} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know \emph{Cite: User Traffic in Home Wireless Networks} that even with similar Wireless conditions devices can experience different bandwidth and bitrate. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
+		\item \textbf{Bandwidth or Throughput} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know \emph{Cite: User Traffic in Home Wireless Networks} that even with similar Wireless conditions devices can experience different bandwidth and bitrate. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
 		\item \textbf{PHY Tx Rate} - We will extract this metric from the sniffer close to the AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}.
 		\item \textbf{RSSI} - Measure to be collected at the client side. Based on the location of the client device, obstacles in the path, contention and interference RSSI can be impacted. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
 		\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement.

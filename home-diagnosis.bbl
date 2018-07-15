@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{predicting_effect_Home_Wifi}
+Diego Da~Hora, Karel Van~Doorselaer, Koen Van~Oost, and Renata Teixeira.
+\newblock {\em Predicting the effect of home Wi-Fi quality on QoE}.
+\newblock PhD thesis, INRIA; Technicolor; Telecom ParisTech, 2018.
+
+\bibitem{passive_wifi_capacity_estimation}
+Diego~Neves da~Hora, Karel Van~Doorselaer, Koen Van~Oost, Renata Teixeira, and
+  Christophe Diot.
+\newblock Passive wi-fi link capacity estimation on commodity access points.
+\newblock In {\em Traffic Monitoring and Analysis Workshop (TMA) 2016}, 2016.
+
+\bibitem{hostview}
+Diana Joumblatt, Renata Teixeira, Jaideep Chandrashekar, and Nina Taft.
+\newblock Hostview: Annotating end-host performance measurements with user
+  feedback.
+\newblock {\em ACM SIGMETRICS Performance Evaluation Review}, 38(3):43--48,
+  2011.
+
+\bibitem{WLAN_Troubleshooting}
+Ilias Syrigos, Stratos Keranidis, Thanasis Korakis, and Constantine Dovrolis.
+\newblock Enabling wireless lan troubleshooting.
+\newblock In {\em International Conference on Passive and Active Network
+  Measurement}, pages 318--331. Springer, 2015.
+
+\end{thebibliography}

@@ -35,12 +35,12 @@ Laptop running Ubuntu 16.04.4 LTS (Xenial Xerus)
 \textbf{Main ideas for the evaluation methods}
 
 \begin{itemize}
-	\item Attenuation
+	\item \textbf{Attenuation}
 	\begin{itemize}
 		\item We have been using the embedded manger for attenuation in Orbit.
 		\item We can instrument attenuation values on the links connecting the nodes, in our case we vary the attenuation values between Wireless client and AP.
 		\item Attenuation controller allows to define values in the range from 0 - 30 dBm.
-		\item For our experiment we have been varying the values from 0 to 30 in step of 3.
+		\item For our experiment we have been varying the values from 0 to 30 in steps of 3.
 		\item We vary the attenuation and record the RTTs for pings.
 		\item We have identified that after 27 dBm of attenuation is when we begin to see an increase in RTTs, each session last 10 min. Probe rate every 200msec.
 		\item At 30 dBm the connectivity between Wireless client and AP is lost.
@@ -52,17 +52,18 @@ Laptop running Ubuntu 16.04.4 LTS (Xenial Xerus)
 		
 	\end{itemize}
 
-	\item \textbf{Wi-Fi Interference}
-	\begin{itemize}
-		\item To create Wi-Fi interference we will deploy a 2nd Wireless client and 2nd AP.
-		\item These two nodes will be set to operate in the same channel as the first Wireless client and AP.
-		\item The goal is to create an interference in which the source of the interference speaks Wi-Fi, meaning it can request time transmit, wait for the other station to transmit and transmit.
-	\end{itemize}
+	%\item \textbf{Wi-Fi Interference}
+	%\begin{itemize}
+	%	\item To create Wi-Fi interference we will deploy a 2nd Wireless client and 2nd AP.
+	%	\item These two nodes will be set to operate in the same channel as the first Wireless client and AP.
+	%	\item The goal is to create an interference in which the source of the interference speaks Wi-Fi, meaning it can request time transmit, wait for the other station to transmit and transmit.
+	%\end{itemize}
 	
-	\item \textbf{Non-Wi-Fi Interference}
+	\item \textbf{Interference}
 	\begin{itemize}
 		\item Currently looking for a way to create Noise in SB4.
-		\item Check if for a specific time they can setup a Microwave over or similar.
+		\item Check if for a specific time they can setup a Microwave oven or similar.
+		
 	\end{itemize}
 	
 	
@@ -73,6 +74,7 @@ Laptop running Ubuntu 16.04.4 LTS (Xenial Xerus)
 		\item The 2nd Wireless client will send traffic to the iPerf server located in the wired client.
 		\item The original client will continue to send pings to the wired client.
 		\item We will record the results of RTT while other client is sending traffic to the iPerf Server.
+		
 	\end{itemize}
 	
 	
