@@ -1,12 +1,12 @@
 \section{Background and Related Work}\label{Back_Related_Work}
 
-In this section we present a \emph{high level overview} of what has been done before with regards to Wireless conditions measurements.
+In this section we present a \emph{high level overview} of what has been done with regards to Home WiFi problems identification.
 
-We refer to literature and mention the methods and metrics collected from those methods to predict, infer or asses Wireless conditions.
+We present the two methods for network measurements, active and passive. We describe the main characteristics of each of them and list the pros and cons of each one.
 
 \subsection{Wireless Monitoring Metrics}
 
-Here we list the metrics found in literature and list them under the two families, active and passive.
+Section to describe active and passive measurements.
 
 \subsection*{Active}
 
@@ -100,27 +100,15 @@ Outlined in the following list a high level summary of the Pros and Cons of pass
 
 \subsection{Where do we collect them?}
 
-We list the different vantage points from where the metrics have been collected. We can also include the accuracy.
-
-Note - From what I recall most of metrics have been collected from APs, which means we need to have access to the AP.
+We list the different vantage points from where the metrics have been collected in our work. We describe the reason why are collecting them from the specific vantage location we have chosen. For example accuracy, getting RSSI from a client A will be different from client B, even if they are located at a similar distance from AP.
 
 \begin{itemize}
-	\item Station - UE User Equipment 
-	\begin{itemize}
-		\item \textbf{Bandwidth or Throughput} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know \emph{Cite: User Traffic in Home Wireless Networks} that even with similar Wireless conditions devices can experience different bandwidth and bitrate. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
-		\item \textbf{PHY Tx Rate} - We will extract this metric from the sniffer close to the AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}.
-		\item \textbf{RSSI} - Measure to be collected at the client side. Based on the location of the client device, obstacles in the path, contention and interference RSSI can be impacted. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
-		\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement.
+	\item \textbf{Bandwidth or Throughput} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know that even with similar Wireless conditions devices can experience different bandwidth and bitrate. \cite{measuring_user_traffic}. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
+	\item \textbf{PHY Tx Rate} - We will extract this metric from WiFi metrics at AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}.
+	\emph{Note - We can also add a sniffer between AP and wireless client to validate that stats collected from commands match the radiotap headers.}
+	\item \textbf{RSSI} - Measure to be collected at the wireless client. Based on the location of the client device, obstacles in the path, contention and interference will impact RSSI. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
+	\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave ovens, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement. Command \emph{cat /proc/net/wireless}.
+	\item \textbf{Busy Time} - We will measure it from the AP as it is the one servicing clients in a specific channel (channels), meaning that clients will be connecting to that serving channel. If the busy time of the channel is high, means there is interference or other AP and clients using the same channel. A corrective action can be switching to a less busy channel. The busy time is made of two components, WiFi (congestion) and non-Wi-Fi (interference). Command \emph{iw INTERFACE survey dump}	
 		
-	\end{itemize}
-	
-	\item Access Point
-	\begin{itemize}
-		\item \textbf{Busy Time} - We will measure it from the AP as it is the one servicing clients in a specific channel (channels), meaning that clients will be connecting to that serving channel. Knowing that the channel being used is busy most of the time can lead to the corrective action of switching to a less busy channel. Reason of why channel has a high busy time can eb associated to interference or congestion. The busy time is made of two major components, Wi-Fi (congestion) and non-Wi-Fi (interference).
-		\item With a second NIC and setting up Airshark extension can help to extract more granular metrics on what is Wi-Fi and Non-Wi-Fi busy time.
-		\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement.
-		
-	\end{itemize}
-	
-	%\item Server
 \end{itemize}
+		%\item Server

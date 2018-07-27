@@ -1,0 +1,315 @@
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -92
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -41
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 527
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 6
+        channel: 149,80
+     agrCtlRSSI: -41
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -41
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 434
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 9
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -41
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 527
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 6
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -92
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -41
+     agrExtRSSI: 0
+    agrCtlNoise: -92
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -39
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -40
+     agrExtRSSI: 0
+    agrCtlNoise: -90
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 702
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 8
+        channel: 149,80
+     agrCtlRSSI: -39
+     agrExtRSSI: 0
+    agrCtlNoise: -92
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -39
+     agrExtRSSI: 0
+    agrCtlNoise: -92
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80
+     agrCtlRSSI: -39
+     agrExtRSSI: 0
+    agrCtlNoise: -92
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 585
+        maxRate: 867
+lastAssocStatus: 0
+    802.11 auth: open
+      link auth: wpa2-psk
+          BSSID: 70:3a:cb:5:31:ae
+           SSID: iamnotartr
+            MCS: 7
+        channel: 149,80

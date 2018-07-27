@@ -11,17 +11,10 @@ Diego~Neves da~Hora, Karel Van~Doorselaer, Koen Van~Oost, Renata Teixeira, and
 \newblock Passive wi-fi link capacity estimation on commodity access points.
 \newblock In {\em Traffic Monitoring and Analysis Workshop (TMA) 2016}, 2016.
 
-\bibitem{hostview}
-Diana Joumblatt, Renata Teixeira, Jaideep Chandrashekar, and Nina Taft.
-\newblock Hostview: Annotating end-host performance measurements with user
-  feedback.
-\newblock {\em ACM SIGMETRICS Performance Evaluation Review}, 38(3):43--48,
-  2011.
-
-\bibitem{WLAN_Troubleshooting}
-Ilias Syrigos, Stratos Keranidis, Thanasis Korakis, and Constantine Dovrolis.
-\newblock Enabling wireless lan troubleshooting.
+\bibitem{measuring_user_traffic}
+Srikanth Sundaresan, Nick Feamster, and Renata Teixeira.
+\newblock Measuring the performance of user traffic in home wireless networks.
 \newblock In {\em International Conference on Passive and Active Network
-  Measurement}, pages 318--331. Springer, 2015.
+  Measurement}, pages 305--317. Springer, 2015.
 
 \end{thebibliography}
