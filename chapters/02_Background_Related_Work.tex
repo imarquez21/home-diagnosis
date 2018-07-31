@@ -38,7 +38,7 @@ Active measurement techniques are mainly characterized by its ability to capture
 		\item This metric takes into account the time it takes for a probe to leave the source, reach the destination and come back to the source. 
 	\end{itemize}
 	
-	\item \textbf{Bandwidth}
+	\item \textbf{Throughput}
 	\begin{itemize}
 		\item The amount of data that can be sent or received from or by a station will allow to identify how far are we from the PHY data rate. In practice the bandwidth is less than the PHY rate at which the station has connected to in 802.11 protocol PHY rate.
 		\item In other words this measurement can help to identify how efficiently is the medium being used.
@@ -46,7 +46,6 @@ Active measurement techniques are mainly characterized by its ability to capture
 	\item \textbf{Losses}
 	\begin{itemize}
 		\item Losses from Ping statistic will allow us to identify the rate loss during the experiment window.
-		\item \emph{Review Code changes to be made in Go in order to add a second queued.}
 	\end{itemize}
 \end{itemize}
 
@@ -94,6 +93,11 @@ Outlined in the following list a high level summary of the Pros and Cons of pass
 	\begin{itemize}
 		\item 	The rate at which without medium access control, error correction or scheduling events the device is expected to operate with.
 		\emph{The PHY rate can be obtained from a radio tap, checking the 802.11 header and check the precise bit rate at which that specific frame was transmitted.}
+	\end{itemize}
+	
+	\item \textbf{Frame Delivery Ratio}
+	\begin{itemize}
+		\item Frame Delivery Ratio depicts the ratio between packets successfully received and total packet sent. The FDR metric can assist to get a sense of link quality, if our ratio is high then, the quality of the link can be perceived as reliable.
 	\end{itemize}
 
 \end{itemize}
