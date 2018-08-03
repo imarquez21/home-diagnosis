@@ -89,7 +89,7 @@ We configure a node to work as a Wireless station, another as an AP and finally 
 The third node working as a wired client plays a similar role as the Pi in our In-lab setup.
 
 
-\subsection{Evaluation method}
+\subsection{Setup of testbed}
 
 Here we explain how we ran the experiments.
 
@@ -100,6 +100,21 @@ We can set a "cost" to our experiments based on overhead at the following points
 	\item Device
 	\item Router
 \end{itemize}
+
+
+\subsection{RSSI in the wild}
+
+In order to collect realistic metric from can be considered a common value of RSSI in the wild we ran survey to collect this metric. We asked our colleagues in our office to run a script from which's output we can extract the RSSI value. We obtained ~760 samples metrics coming from different environment contexts,  mainly home and offices. We found RSSI average value in the wild to range between -60 and -60 [dBm]. Following picture depicts the histogram of RSSI obtained from the survey.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{RSSI_Stats/RSSI_Histogram}
+	\caption{RSSI Survey Values Histogram}
+	\label{fig:vSDN_Controller_DC}
+\end{figure}
+
+
+The main goal of this exercise is setup our testbed attenuation settings to trigger an RSSI value similar to the one found with the survey. In our testbed the attenuation values which lead to an RSSI value between the found range are 0, 3 and 6 [dBm] in the 2.4 GHz band.
 
 
 We can include the accuracy of our methods depending on where are we setting our Vantage point.ex

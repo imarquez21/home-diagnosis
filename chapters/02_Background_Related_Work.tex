@@ -4,9 +4,9 @@ In this section we present a \emph{high level overview} of what has been done wi
 
 We present the two methods for network measurements, active and passive. We describe the main characteristics of each of them and list the pros and cons of each one.
 
-\subsection{Wireless Monitoring Metrics}
+\subsection{Wireless Monitoring Metrics}\label{Wireless Monitoring Metrics}
 
-Section to describe active and passive measurements.
+In the networking context and, to be more specific, in the network measurement context two approaches are well-known. These two approaches are \textbf{active} and \textbf{passive}. Each one of them has its own strong points and opportunity areas. In the following lines we outline the main characteristics of each one of them and what can be considered their pros and cons. Important to mention, we do not take a preference for one over the other. Each of the approaches will be best suited depending on the experiment goal and context.
 
 \subsection*{Active}
 
@@ -81,36 +81,34 @@ Outlined in the following list a high level summary of the Pros and Cons of pass
 	%\end{itemize}
 	\item \textbf{RSSI - Received Signal Strength Indicator}
 	\begin{itemize}
-		\item The power at which the signal is being received by the device. Depending on the the type of traffic specific threshold can be defined for it. For example, for VoIP the min value for it is -68 dBm. What is consider a strong signal level is -40 dBm.
+		\item The power at which the signal is being received by the device. Depending on the type of traffic specific RSSI thresholds are often defined to define where the lower bound is located. For example, for VoIP the min RSSI value for an acceptable VoIP call is -68 dBm. In the other hand an RSSI -40 dBm is expected to deliver a good VoIP experience.
 	\end{itemize}
-
+	\hfill \break
 	\item \textbf{Busy Time}
 	\begin{itemize}
-		\item This metric can tell us how busy was the channel, in other words if the channel the device is working on is close to 100\% it can be due to contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
+		\item This metric is associated to the time the channel was busy, in other words the time channel was being used and therefore not eligible for data exchange. Reasons for channel busy time to be close to 100\% can be contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
 	\end{itemize}
 	
 	\item \textbf{PHY Tx Rate}
 	\begin{itemize}
 		\item 	The rate at which without medium access control, error correction or scheduling events the device is expected to operate with.
-		\emph{The PHY rate can be obtained from a radio tap, checking the 802.11 header and check the precise bit rate at which that specific frame was transmitted.}
 	\end{itemize}
 	
 	\item \textbf{Frame Delivery Ratio}
 	\begin{itemize}
-		\item Frame Delivery Ratio depicts the ratio between packets successfully received and total packet sent. The FDR metric can assist to get a sense of link quality, if our ratio is high then, the quality of the link can be perceived as reliable.
+		\item Frame Delivery Ratio depicts the ratio between packets successfully received and total packet sent. The FDR metric can assist to get a sense of link quality. If FDR ratio is high then, the quality of the link can be perceived as good.
 	\end{itemize}
 
 \end{itemize}
 
 \subsection{Where do we collect them?}
 
-We list the different vantage points from where the metrics have been collected in our work. We describe the reason why are collecting them from the specific vantage location we have chosen. For example accuracy, getting RSSI from a client A will be different from client B, even if they are located at a similar distance from AP.
+We list the different vantage points from where the metrics have been collected in our work. We describe the reason of collecting them at the specific vantage point. For example, a characteristic to strive for is accuracy. Getting RSSI from client A will be different from client B, even if they are located at a similar distance from AP. The difference can rely on NIC, OS, firmware, driver, etc.
 
 \begin{itemize}
 	\item \textbf{Bandwidth or Throughput} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know that even with similar Wireless conditions devices can experience different bandwidth and bitrate. \cite{measuring_user_traffic}. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
-	\item \textbf{PHY Tx Rate} - We will extract this metric from WiFi metrics at AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}.
-	\emph{Note - We can also add a sniffer between AP and wireless client to validate that stats collected from commands match the radiotap headers.}
-	\item \textbf{RSSI} - Measure to be collected at the wireless client. Based on the location of the client device, obstacles in the path, contention and interference will impact RSSI. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
+	\item \textbf{PHY Tx Rate} - We will extract this metric from WiFi metrics at AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}. We have also added a wireless sniffer to collect packet captures of the traffic between wireless client and AP.
+	\item \textbf{RSSI} - Measure to be collected at the wireless client. The RSSI varies on wireless client location and obstacles in the path from Wireless client to AP. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
 	\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave ovens, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement. Command \emph{cat /proc/net/wireless}.
 	\item \textbf{Busy Time} - We will measure it from the AP as it is the one servicing clients in a specific channel (channels), meaning that clients will be connecting to that serving channel. If the busy time of the channel is high, means there is interference or other AP and clients using the same channel. A corrective action can be switching to a less busy channel. The busy time is made of two components, WiFi (congestion) and non-Wi-Fi (interference). Command \emph{iw INTERFACE survey dump}	
 		

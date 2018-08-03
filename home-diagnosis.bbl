@@ -11,10 +11,45 @@ Diego~Neves da~Hora, Karel Van~Doorselaer, Koen Van~Oost, Renata Teixeira, and
 \newblock Passive wi-fi link capacity estimation on commodity access points.
 \newblock In {\em Traffic Monitoring and Analysis Workshop (TMA) 2016}, 2016.
 
+\bibitem{hostview}
+Diana Joumblatt, Renata Teixeira, Jaideep Chandrashekar, and Nina Taft.
+\newblock Hostview: Annotating end-host performance measurements with user
+  feedback.
+\newblock {\em ACM SIGMETRICS Performance Evaluation Review}, 38(3):43--48,
+  2011.
+
+\bibitem{can_user_level_probing}
+Partha Kanuparthy, Constantine Dovrolis, Konstantina Papagiannaki, Srinivasan
+  Seshan, and Peter Steenkiste.
+\newblock Can user-level probing detect and diagnose common home-wlan
+  pathologies.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 42(1):7--15, 2012.
+
+\bibitem{wislow}
+Kyung-Hwa Kim, Hyunwoo Nam, and Henning Schulzrinne.
+\newblock Wislow: A wi-fi network performance troubleshooting tool for end
+  users.
+\newblock In {\em INFOCOM}, pages 862--870, 2014.
+
+\bibitem{wifi_weakest_link}
+Changhua Pei, Youjian Zhao, Guo Chen, Ruming Tang, Yuan Meng, Minghua Ma, Ken
+  Ling, and Dan Pei.
+\newblock Wifi can be the weakest link of round trip network latency in the
+  wild.
+\newblock In {\em INFOCOM 2016-The 35th Annual IEEE International Conference on
+  Computer Communications, IEEE}, pages 1--9. IEEE, 2016.
+
 \bibitem{measuring_user_traffic}
 Srikanth Sundaresan, Nick Feamster, and Renata Teixeira.
 \newblock Measuring the performance of user traffic in home wireless networks.
 \newblock In {\em International Conference on Passive and Active Network
   Measurement}, pages 305--317. Springer, 2015.
+
+\bibitem{homeoraccesslink}
+Srikanth Sundaresan, Nick Feamster, and Renata Teixeira.
+\newblock Home network or access link? locating last-mile downstream throughput
+  bottlenecks.
+\newblock In {\em International Conference on Passive and Active Network
+  Measurement}, pages 111--123. Springer, 2016.
 
 \end{thebibliography}
