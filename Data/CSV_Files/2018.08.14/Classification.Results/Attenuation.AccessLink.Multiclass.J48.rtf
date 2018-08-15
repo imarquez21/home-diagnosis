@@ -1,0 +1,75 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     Attenuation.AccessLink.Multiclass_2
+Instances:    500
+Attributes:   20
+              TestID
+              AP_RSSI
+              AP_TxRate
+              AP_Noise
+              AP_MCS
+              AP_Throughput
+              AP_FDR
+              Client_RSSI
+              Client_TxRate
+              Client_Noise
+              Client_MCS
+              Client_Throughput
+              Client_FDR
+              iPerf_Throughput
+              GoPing_Min
+              GoPing_Avg
+              GoPing_Max
+              GoPing_Std.Dev
+              GoPing_Loss
+              class
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+GoPing_Avg <= 466.594009: 2 (50.0)
+GoPing_Avg > 466.594009
+|   AP_RSSI <= -70: 1 (49.0)
+|   AP_RSSI > -70: 0 (401.0/1.0)
+
+Number of Leaves  : 	3
+
+Size of the tree : 	5
+
+
+Time taken to build model: 0.02 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.01 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         499               99.8    %
+Incorrectly Classified Instances         1                0.2    %
+Kappa statistic                          0.9941
+Mean absolute error                      0.0027
+Root mean squared error                  0.0365
+Relative absolute error                  1.1669 %
+Root relative squared error             10.8328 %
+Total Number of Instances              500     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.010    0.998      1.000    0.999      0.994    0.995     0.998     0
+                 0.980    0.000    1.000      0.980    0.990      0.989    0.991     0.982     1
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     2
+Weighted Avg.    0.998    0.008    0.998      0.998    0.998      0.994    0.995     0.996     
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 400   0   0 |   a = 0
+   1  49   0 |   b = 1
+   0   0  50 |   c = 2
+

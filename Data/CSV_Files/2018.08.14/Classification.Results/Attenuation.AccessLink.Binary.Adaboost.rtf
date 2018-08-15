@@ -1,0 +1,296 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     Attenuation.AccessLink.Binary_2
+Instances:    500
+Attributes:   20
+              TestID
+              AP_RSSI
+              AP_TxRate
+              AP_Noise
+              AP_MCS
+              AP_Throughput
+              AP_FDR
+              Client_RSSI
+              Client_TxRate
+              Client_Noise
+              Client_MCS
+              Client_Throughput
+              Client_FDR
+              iPerf_Throughput
+              GoPing_Min
+              GoPing_Avg
+              GoPing_Max
+              GoPing_Std.Dev
+              GoPing_Loss
+              class
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+Client_RSSI <= 39.443504000000004 : 1
+Client_RSSI > 39.443504000000004 : 0
+Client_RSSI is missing : 0
+
+Class distributions
+
+Client_RSSI <= 39.443504000000004
+0	1	
+0.09090909090909091	0.9090909090909091	
+Client_RSSI > 39.443504000000004
+0	1	
+0.9290780141843972	0.07092198581560284	
+Client_RSSI is missing
+0	1	
+0.8	0.2	
+
+
+Weight: 2.53
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 505.1725225 : 1
+GoPing_Avg > 505.1725225 : 0
+GoPing_Avg is missing : 0
+
+Class distributions
+
+GoPing_Avg <= 505.1725225
+0	1	
+0.0	1.0	
+GoPing_Avg > 505.1725225
+0	1	
+0.9057660961695192	0.09423390383048086	
+GoPing_Avg is missing
+0	1	
+0.5190006421107913	0.4809993578892087	
+
+
+Weight: 2.86
+
+Decision Stump
+
+Classifications
+
+AP_RSSI <= -69.5 : 1
+AP_RSSI > -69.5 : 0
+AP_RSSI is missing : 1
+
+Class distributions
+
+AP_RSSI <= -69.5
+0	1	
+0.0	1.0	
+AP_RSSI > -69.5
+0	1	
+0.5378666337570462	0.4621333662429538	
+AP_RSSI is missing
+0	1	
+0.27431198321609457	0.7256880167839054	
+
+
+Weight: 1.18
+
+Decision Stump
+
+Classifications
+
+Client_RSSI <= 43.345 : 1
+Client_RSSI > 43.345 : 0
+Client_RSSI is missing : 1
+
+Class distributions
+
+Client_RSSI <= 43.345
+0	1	
+0.10673929684774203	0.8932607031522579	
+Client_RSSI > 43.345
+0	1	
+1.0000000000000184	-1.8462004313125544E-14	
+Client_RSSI is missing
+0	1	
+0.1794502698111818	0.8205497301888182	
+
+
+Weight: 2.22
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 505.1725225 : 1
+GoPing_Avg > 505.1725225 : 0
+GoPing_Avg is missing : 0
+
+Class distributions
+
+GoPing_Avg <= 505.1725225
+0	1	
+0.0	1.0	
+GoPing_Avg > 505.1725225
+0	1	
+0.7420867272825558	0.25791327271744424	
+GoPing_Avg is missing
+0	1	
+0.5451242129835988	0.45487578701640113	
+
+
+Weight: 1.45
+
+Decision Stump
+
+Classifications
+
+AP_MCS = MCS7 : 0
+AP_MCS != MCS7 : 1
+AP_MCS is missing : 1
+
+Class distributions
+
+AP_MCS = MCS7
+0	1	
+0.647745921790106	0.35225407820989396	
+AP_MCS != MCS7
+0	1	
+0.0	1.0	
+AP_MCS is missing
+0	1	
+0.3362716975252924	0.6637283024747076	
+
+
+Weight: 1.5
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 505.1725225 : 1
+GoPing_Avg > 505.1725225 : 1
+GoPing_Avg is missing : 1
+
+Class distributions
+
+GoPing_Avg <= 505.1725225
+0	1	
+0.0	1.0	
+GoPing_Avg > 505.1725225
+0	1	
+0.3725337126615178	0.6274662873384822	
+GoPing_Avg is missing
+0	1	
+0.2057638061458334	0.7942361938541666	
+
+
+Weight: 1.35
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 505.1725225 : 1
+GoPing_Avg > 505.1725225 : 0
+GoPing_Avg is missing : 0
+
+Class distributions
+
+GoPing_Avg <= 505.1725225
+0	1	
+0.0	1.0	
+GoPing_Avg > 505.1725225
+0	1	
+0.6962046868594435	0.30379531314055663	
+GoPing_Avg is missing
+0	1	
+0.5000000000000029	0.49999999999999706	
+
+
+Weight: 1.28
+
+Decision Stump
+
+Classifications
+
+AP_RSSI <= -69.5 : 1
+AP_RSSI > -69.5 : 0
+AP_RSSI is missing : 1
+
+Class distributions
+
+AP_RSSI <= -69.5
+0	1	
+0.0	1.0	
+AP_RSSI > -69.5
+0	1	
+0.6063088526176835	0.39369114738231653	
+AP_RSSI is missing
+0	1	
+0.3197665325439514	0.6802334674560486	
+
+
+Weight: 1.34
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 505.1725225 : 1
+GoPing_Avg > 505.1725225 : 1
+GoPing_Avg is missing : 1
+
+Class distributions
+
+GoPing_Avg <= 505.1725225
+0	1	
+0.0	1.0	
+GoPing_Avg > 505.1725225
+0	1	
+0.3565133932801754	0.6434866067198247	
+GoPing_Avg is missing
+0	1	
+0.2017791110557813	0.7982208889442187	
+
+
+Weight: 1.38
+
+Number of performed Iterations: 10
+
+
+Time taken to build model: 0.11 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.01 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         500              100      %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1     
+Mean absolute error                      0.0039
+Root mean squared error                  0.0191
+Relative absolute error                  1.2154 %
+Root relative squared error              4.7758 %
+Total Number of Instances              500     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     0
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     1
+Weighted Avg.    1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 400   0 |   a = 0
+   0 100 |   b = 1
+
+
