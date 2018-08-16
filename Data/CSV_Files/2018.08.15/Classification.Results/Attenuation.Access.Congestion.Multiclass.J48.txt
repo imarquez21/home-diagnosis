@@ -1,0 +1,83 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     Attenuation.AccessLink.Congestion.Multiclass_v2
+Instances:    750
+Attributes:   19
+              AP_RSSI
+              AP_Tx_Rate
+              AP_Noise
+              AP_MCS
+              AP_Throughput
+              AP_FDR
+              iPerf_Throughput
+              Client_RSSI
+              Client_Tx_Rate
+              Client_Noise
+              Client_MCS
+              Client_Throughput
+              Client_FDR
+              GoPing_Min
+              GoPing_Avg
+              GoPing_Max
+              GoPing_Std_Dev
+              GoPing_Loss
+              class
+Test mode:    evaluate on training data
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+GoPing_Avg <= 843.937487
+|   GoPing_Avg <= 466.594009: 2 (50.0)
+|   GoPing_Avg > 466.594009: 0 (595.0)
+GoPing_Avg > 843.937487
+|   Client_RSSI <= -69: 1 (47.0)
+|   Client_RSSI > -69
+|   |   AP_Tx_Rate <= 54: 3 (50.0)
+|   |   AP_Tx_Rate > 54
+|   |   |   AP_Tx_Rate <= 58.5: 1 (3.0)
+|   |   |   AP_Tx_Rate > 58.5: 0 (5.0)
+
+Number of Leaves  : 	6
+
+Size of the tree : 	11
+
+
+Time taken to build model: 0.09 seconds
+
+=== Evaluation on training set ===
+
+Time taken to test model on training data: 0.01 seconds
+
+=== Summary ===
+
+Correctly Classified Instances         750              100      %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1     
+Mean absolute error                      0     
+Root mean squared error                  0     
+Relative absolute error                  0      %
+Root relative squared error              0      %
+Total Number of Instances              750     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     0
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     1
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     2
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     3
+Weighted Avg.    1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 600   0   0   0 |   a = 0
+   0  50   0   0 |   b = 1
+   0   0  50   0 |   c = 2
+   0   0   0  50 |   d = 3
+
+
