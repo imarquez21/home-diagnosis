@@ -1,31 +1,30 @@
 \section{Background and Related Work}\label{Back_Related_Work}
 
-In this section we present a \emph{high level overview} of what has been done with regards to Home WiFi problems identification.
+The challenge to identify issues in the Home WiFi has been approached before. To address this challenge the research community has relied on two measurement techniques, active and passive. While most of previous works have opted for passive techniques \cite{hostview} \cite{passive_wifi_capacity_estimation}, others, have worked with active ones \cite{can_user_level_probing}. In the work of Joumblatt, Diana, et al. \cite{hostview} they have opted for passive techniques to be able to extract fine-grained data from packet captures. In their experiments context active techniques were not chosen as they might not reflect application performance properly. Application performance was a key element of their research. They overcame privacy concerns associated by anomymizing the collected data. The work of Neves Da Hora, et al \cite{passive_wifi_capacity_estimation} also chose passive techniques. In their research context, active techniques might have led to user traffic disruption and battery drain of devices under study. Within the context of passive metrics, they excluded per packet analysis as it can result in overhead during high network utilization periods. Their work mostly relied on standard metrics passively collected from APs.
+Active techniques were implemented in the work of Kanuparthy, Partha, et al \cite{can_user_level_probing}. Their work rely on user-level probing. They propose a metric called one-way-delay OWD or wireless access delay. The OWD reflects the delays a packet faces while going through a 802.11 link. They have chosen active measurement to achieve software and hardware agnostic mechanisms. They pursue agnostic mechanisms to facilitate the deployment of the tool at a large scale. The common ground among the works mentioned before and our work is tool's usability and scalability. We strive for a tool to be deployed at a large scale with minimal modifications to the Home WiFi setup. The area in which we differ with previous works is the implementation of an active measurement technique with a specific probing rate. The probing rate we have chosen will get a sense of network status without adding significant overhead to it. We describe how we chose the probing rate in Section \ref{Wireless Bottleneck Detector}.
 
-We present the two methods for network measurements, active and passive. We describe the main characteristics of each of them and list the pros and cons of each one.
 
 \subsection{Wireless Monitoring Metrics}\label{Wireless Monitoring Metrics}
 
-In the networking context and, to be more specific, in the network measurement context two techniques are well-known. These two techniques are \textbf{active} and \textbf{passive}. In one hand passive techniques "sit and listen" within the network whereas active ones "inject" traffic to fetch indicators about the status of the network. In the context of our work associated to identifying home WiFi issues previous works \cite{hostview} \cite{passive_wifi_capacity_estimation} have chosen for passive techniques. In fact most of previous works have mainly focused on passive techniques. This might be associated to the granularity of data collected with passive techniques without adding overhead in the network. Some other works \cite{can_user_level_probing} have implemented active techniques. With active techniques the measurement are almost real-time. The downside is the risk of adding significant overhead to the network which might results in biased results. Each one of them has its own strong points and opportunity areas. In the following lines we outline the main characteristics of each one of them and what can be considered their pros and cons. Important to mention, we do not take any preference for one over the other. Each of the approaches will be best suited depending on the experiment goal and context.
+ Active and passive techniques have their own strong points and areas for improvement. In the following lines we outline the main characteristics of each one of them and what can be considered their strengths and weaknesses. Important to mention, we do not dare to tell a specific technique is better than the other. Each of the techniques will be best-suited depending on the  goal and context of the experiment.
 
 \subsection*{Active}
 
-Active measurement techniques are mainly characterized by its ability to capture the state of the network in almost real-time. In other words, active measurement can help to identify a condition when is present in the network. This characteristic is different from passive network which can be considered historical. Active measurements are also characterized by the use of probes. Probe packet are used to measure the state of the network. For example, ping, relies on ICMP request and replies to compute the Round-Trip Time from one host to another. An important consideration to bear  in mind when using active measurement techniques are the probes. It is important to define the size of the probes and how frequent are they sent into the network. Probes can add overhead to the network if their size is high compared to the capacity of the path or if they are sent too frequent. If probing is causing overhead to the network, the condition we want to measure will be caused by the same tool we are using to measure. Probing without the proper due diligence can lead to network degradation and/or biased measurements. In the following bullet points we outline the pros and cons of active measurement techniques.
+Active measurement techniques are mainly characterized by its ability to capture the state of the network in almost real-time. In other words, active measurement can help to identify a condition when is present in the network. This characteristic is different from passive measurements which can be considered historical. Active measurements are also characterized by the use of probes. Probes are packets ``injected" in the network to measure its status. For example, ping relies on ICMP requests and replies to compute the Round-Trip Time. For Ping, the probes are the IMCP requests and replies. It is important to pay attention to the probe size and probing rate. Probes can add overhead to the network if their size is large compared to the capacity of the path or if the rate is high. If probing causes overhead it will not only might disrupt user traffic but can also lead to biased measurement results. In the following bullet points we outline the strengths and weaknesses of active measurement techniques and the metric we have used for our work.
 
-\textbf{Pros}
+\textbf{Strengths}
 \begin{itemize}
 	\item Full ownership of the network is not required.
 	\item They do not require large space to store data collected as generally, probe packets are small.
 	\item Privacy concerns are minimal as probe packet used to measure are made of random data which has no sensitive information.
-	\item Useful to get the state of the network in real-time.
+	\item Useful to get the state of the network in almost real-time.
 \end{itemize}
 	
 
-\textbf{Cons}
+\textbf{Weaknesses}
 \begin{itemize}
-	\item They add overhead to the network as probe traffic is generated to conduct measurements.
-	\item The very same probe packets being used to measure network conditions can cause network degradation.
-	\item Biased results can be obtained if probing is conducted without due diligence of network conditions.
+	\item Overhead might occur if probe size and rate are chosen without due diligence of network conditions.
+	\item Biased results can be obtained if probing causes overhead in the network.
 	\item They can only capture an instant of the network condition. If problem to be characterized is extended in time, active measurement might not measure it accurately.
 \end{itemize}
 
@@ -40,8 +39,7 @@ Active measurement techniques are mainly characterized by its ability to capture
 	
 	\item \textbf{Throughput}
 	\begin{itemize}
-		\item The amount of data that can be sent or received from or by a station will allow to identify how far are we from the PHY data rate. In practice the bandwidth is less than the PHY rate at which the station has connected to in 802.11 protocol PHY rate.
-		\item In other words this measurement can help to identify how efficiently is the medium being used.
+		\item The amount of data sent or received from or by a station within a time window. 
 	\end{itemize}
 	\item \textbf{Losses}
 	\begin{itemize}
@@ -54,7 +52,7 @@ Active measurement techniques are mainly characterized by its ability to capture
 Passive measurement techniques rely on a listening approach. The instrument conducting passive measurements in the network sits in a specific location along the path and records the metrics of interest. The instrument can be a component of then network itself, like a router, or can be a device devoted to measure, like a Wireless sniffer. An important different between active and passive techniques, is that passive tend to be historical. In an historical sense, passive measurements are more reliable to characterize a network problem which cover an extended time-frame. Active measurements are suitable to pinpoint a problem in the instant it happens, nevertheless they lack accuracy to characterize problems which cover and extended time-frame. Another difference with active measurements is that passive measurements do not trigger probes. Overhead within the network path caused by probe packets is not present with active measurement. When implementing passive measurements it is important to consider the resources of the measuring device. The device might require to have enough storage to store the data being collected. In a similar way, the computing capability of the device an be required to be high depending on the speed of the link being measured. A Gigabit link in a Core Router will produce significantly more data than an 100Mbps Ethernet link of an access switch. In our tool we have passive tools such implemented Wireless Sniffer and WiFi metrics collection from Wireless client and Access Point.
 Outlined in the following list a high level summary of the Pros and Cons of passive measurement techniques.
 
-\textbf{Pros}
+\textbf{Strengths}
 \begin{itemize}
 	\item No extra traffic is generated to collect metrics, risk of causing overhead is minimized.
 	\item They are better suited to accurately characterize network problems which cover an extended time frame.
@@ -63,7 +61,7 @@ Outlined in the following list a high level summary of the Pros and Cons of pass
 \end{itemize}
 
 
-\textbf{Cons}
+\textbf{Weaknesses}
 \begin{itemize}
 	\item Data collected by them can be large. Large storage can be required to store data collected.
 	\item Access to devices within the network is required in order to place the passive instrument.
