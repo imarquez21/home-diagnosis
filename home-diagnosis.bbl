@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{predicting_effect_Home_Wifi}
 Diego Da~Hora, Karel Van~Doorselaer, Koen Van~Oost, and Renata Teixeira.
@@ -30,6 +30,17 @@ Kyung-Hwa Kim, Hyunwoo Nam, and Henning Schulzrinne.
 \newblock Wislow: A wi-fi network performance troubleshooting tool for end
   users.
 \newblock In {\em INFOCOM}, pages 862--870, 2014.
+
+\bibitem{Cisco_VoWLAN_Guide}
+Aaron Leonard and Shankar Ramanathan.
+\newblock How to get your 8821/792x wireless phones performing reliably, Jul
+  2018.
+
+\bibitem{observing_through_wifi_APs}
+Ashish Patro, Srinivas Govindan, and Suman Banerjee.
+\newblock Observing home wireless experience through wifi aps.
+\newblock In {\em Proceedings of the 19th annual international conference on
+  Mobile computing \& networking}, pages 339--350. ACM, 2013.
 
 \bibitem{wifi_weakest_link}
 Changhua Pei, Youjian Zhao, Guo Chen, Ruming Tang, Yuan Meng, Minghua Ma, Ken

@@ -10,7 +10,7 @@ Active techniques were implemented in the work of Kanuparthy, Partha, et al \cit
 
 \subsection*{Active}
 
-Active measurement techniques are mainly characterized by its ability to capture the state of the network in almost real-time. In other words, active measurement can help to identify a condition when is present in the network. This characteristic is different from passive measurements which can be considered historical. Active measurements are also characterized by the use of probes. Probes are packets ``injected" in the network to measure its status. For example, ping relies on ICMP requests and replies to compute the Round-Trip Time. For Ping, the probes are the IMCP requests and replies. It is important to pay attention to the probe size and probing rate. Probes can add overhead to the network if their size is large compared to the capacity of the path or if the rate is high. If probing causes overhead it will not only might disrupt user traffic but can also lead to biased measurement results. In the following bullet points we outline the strengths and weaknesses of active measurement techniques and the metric we have used for our work.
+Active measurement techniques are mainly characterized by its ability to capture the state of the network in almost real-time. In other words, active measurement can help to identify a condition when is present in the network. This characteristic is different from passive measurements which can be considered historical. Active measurements are also characterized by the use of probes. Probes are packets ``injected" in the network to measure its status. For example, ping relies on ICMP requests and replies to compute the Round-Trip Time. For Ping, the probes are the IMCP requests and replies. It is important to pay attention to the probe size and probing rate. Probes can add overhead to the network if their size is large compared to the capacity of the path or if the rate is high. If probing causes overhead it will not only might disrupt user traffic but can also lead to biased measurement results. In the following bullet points we outline the strengths and weaknesses of active measurement techniques.
 
 \textbf{Strengths}
 \begin{itemize}
@@ -28,46 +28,48 @@ Active measurement techniques are mainly characterized by its ability to capture
 	\item They can only capture an instant of the network condition. If problem to be characterized is extended in time, active measurement might not measure it accurately.
 \end{itemize}
 
+
+Under the scope of active measurement techniques, the following are the metrics to be actively collected for our work.
+
 \subsection*{Active Metrics}
 
 \begin{itemize}
 	%\item One-Way Delay
 	\item \textbf{Round Trip Time}
 	\begin{itemize}
-		\item This metric takes into account the time it takes for a probe to leave the source, reach the destination and come back to the source. 
+		\item This metric takes into account the time it takes for a probe to leave the source, reach the destination and come back to the source. In our work we will compute statistics from RTT.
 	\end{itemize}
 	
 	\item \textbf{Throughput}
 	\begin{itemize}
 		\item The amount of data sent or received from or by a station within a time window. 
 	\end{itemize}
-	\item \textbf{Losses}
-	\begin{itemize}
-		\item Losses from Ping statistic will allow us to identify the rate loss during the experiment window.
-	\end{itemize}
+	%\item \textbf{Losses}
+	%\begin{itemize}
+	%	\item ICMP reply packets not coming back to the source.
+	%\end{itemize}
 \end{itemize}
 
 \subsection*{Passive}
 
-Passive measurement techniques rely on a listening approach. The instrument conducting passive measurements in the network sits in a specific location along the path and records the metrics of interest. The instrument can be a component of then network itself, like a router, or can be a device devoted to measure, like a Wireless sniffer. An important different between active and passive techniques, is that passive tend to be historical. In an historical sense, passive measurements are more reliable to characterize a network problem which cover an extended time-frame. Active measurements are suitable to pinpoint a problem in the instant it happens, nevertheless they lack accuracy to characterize problems which cover and extended time-frame. Another difference with active measurements is that passive measurements do not trigger probes. Overhead within the network path caused by probe packets is not present with active measurement. When implementing passive measurements it is important to consider the resources of the measuring device. The device might require to have enough storage to store the data being collected. In a similar way, the computing capability of the device an be required to be high depending on the speed of the link being measured. A Gigabit link in a Core Router will produce significantly more data than an 100Mbps Ethernet link of an access switch. In our tool we have passive tools such implemented Wireless Sniffer and WiFi metrics collection from Wireless client and Access Point.
-Outlined in the following list a high level summary of the Pros and Cons of passive measurement techniques.
+Passive measurement techniques rely on a ``listen and sit" approach. The instrument conducting passive measurements in the network sits in a specific location along the path and records the metrics of interest. The instrument can be a component of the network itself, for example a router. It can also be device devoted to measure, such as a Wireless sniffer. An important difference between active and passive techniques, is that passive tend to be historical whereas active are real-time oriented. In an historical sense, passive measurements are more reliable to characterize a network problem which covers an extended time-frame. Active measurements are best-suited to pinpoint a problem in the instant it happens, nevertheless they lack accuracy to characterize problems covering an extended time-frame. Another difference between active and passive measurements is that the latter do not trigger probes. Overhead due to probe packets is not present in passive measurements. However, computational and storage resources in the passive measuring device are important factors to consider. The device might require to have enough space to store the data being collected. In a similar way, the computational power of the device can be required to be high depending on the speed of the link being measured. A Gigabit link in a Core Router will handle significantly more data than an 100Mbps Ethernet link in an access switch. 
+Outlined in the following list a high level summary of the strengths and weaknesses of passive measurement techniques.
 
 \textbf{Strengths}
 \begin{itemize}
 	\item No extra traffic is generated to collect metrics, risk of causing overhead is minimized.
-	\item They are better suited to accurately characterize network problems which cover an extended time frame.
-	\item In general they are able to collect large dataset leading to increased accuracy of network complications.
+	\item They are best-suited to accurately characterize network problems covering an extended time frame.
+	\item In general, they are able to collect large datasets leading to fine-grained data. Ultimately leading to increased network complications diagnosis accuracy.
 
 \end{itemize}
 
 
 \textbf{Weaknesses}
 \begin{itemize}
-	\item Data collected by them can be large. Large storage can be required to store data collected.
-	\item Access to devices within the network is required in order to place the passive instrument.
-	\item Measuring device might require to have computational power depending on the link being monitored and the granularity of data pursued.
-	\item They are reactive, findings of network problem can be obtained after data has been analyzed.
-	
+	\item Large storage capacity can be required to store collected data. Not all measuring devices have large storage capacity, i.e. Access Points.
+	\item Access to equipment working as passive measurement device is required. This is not possible for most users at multiple devices along an Internet path.
+	\item High computational power on the measuring device can be required depending on the link being monitored and data granularity pursued. Not all devices can provide high computational power, i.e. Access Points.
+	\item They are reactive, findings on the network problem can be obtained after collected data has been analyzed. The majority of wireless interference issues are known to be short, 1 - 7 min \cite{observing_through_wifi_APs}. By the time the data has been analyzed the wireless interference issue might be already over.
 \end{itemize}
 
 \subsection*{Passive Metrics}
@@ -79,17 +81,27 @@ Outlined in the following list a high level summary of the Pros and Cons of pass
 	%\end{itemize}
 	\item \textbf{RSSI - Received Signal Strength Indicator}
 	\begin{itemize}
-		\item The power at which the signal is being received by the device. Depending on the type of traffic specific RSSI thresholds are often defined to define where the lower bound is located. For example, for VoIP the min RSSI value for an acceptable VoIP call is -68 dBm. In the other hand an RSSI -40 dBm is expected to deliver a good VoIP experience.
+		\item The power at which the signal is being received by the device. Depending on the type of traffic, specific RSSI thresholds are often defined to set an acceptable RSSI level. For example, for VoIP the min RSSI value for an acceptable VoIP call is -67 dBm \cite{Cisco_VoWLAN_Guide}.
 	\end{itemize}
-	\hfill \break
-	\item \textbf{Busy Time}
-	\begin{itemize}
-		\item This metric is associated to the time the channel was busy, in other words the time channel was being used and therefore not eligible for data exchange. Reasons for channel busy time to be close to 100\% can be contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
-	\end{itemize}
+	%\hfill \break
+	%\item \textbf{Busy Time}
+	%\begin{itemize}
+		%\item This metric is associated to the time the channel was busy, in other words the time channel was being used and therefore not eligible for data exchange. Reasons for channel busy time to be close to 100\% can be contention by other Wi-Fi devices or interference from non-Wi-Fi sources.
+	%\end{itemize}
 	
 	\item \textbf{PHY Tx Rate}
 	\begin{itemize}
 		\item 	The rate at which without medium access control, error correction or scheduling events the device is expected to operate with.
+	\end{itemize}
+	
+	\item \textbf{Noise}
+	\begin{itemize}
+		\item  The noise perceived in the Wireless environment, high noise levels can degrade Wireless link quality.
+	\end{itemize}
+	
+	\item \textbf{Throughput - Driver Logs}
+	\begin{itemize}
+		\item 	For this metric, we extract the throughput perceived by the Wireless driver debug logs. It depicts the effective amount of data that can be exchanged.
 	\end{itemize}
 	
 	\item \textbf{Frame Delivery Ratio}
@@ -101,14 +113,26 @@ Outlined in the following list a high level summary of the Pros and Cons of pass
 
 \subsection{Where do we collect them?}
 
-We list the different vantage points from where the metrics have been collected in our work. We describe the reason of collecting them at the specific vantage point. For example, a characteristic to strive for is accuracy. Getting RSSI from client A will be different from client B, even if they are located at a similar distance from AP. The difference can rely on NIC, OS, firmware, driver, etc.
+In our work we have collected the metrics described in section \ref{Wireless Monitoring Metrics}, from multiple devices, vantage points. The device from where we have collected the metrics is key to identify which device is perceiving a particular Home WiFi issue. The metrics values can differ depending on the vantage point, the difference can be caused by device placement, OS, resources, driver and many more.
 
 \begin{itemize}
-	\item \textbf{Bandwidth or Throughput} - We will measure it from the client as it is from the user that we want to get a sense of his experience. It is know that even with similar Wireless conditions devices can experience different bandwidth and bitrate. \cite{measuring_user_traffic}. Therefore we will measure bandwidth from the client perspective at not from the AP. Measuring from the AP will give us a sense of the AP perspective and not from the client which is the device from which the users access services. This metric is to be obtained using iPerf with UDP traffic.
-	\item \textbf{PHY Tx Rate} - We will extract this metric from WiFi metrics at AP to identify at which rate was the frame being received sent. This correlates to identify the actual bit rate at which each frame is being sent. Metric is to be obtained from AP running Linux-based OS with the command \emph{iwconfig}. We have also added a wireless sniffer to collect packet captures of the traffic between wireless client and AP.
-	\item \textbf{RSSI} - Measure to be collected at the wireless client. The RSSI varies on wireless client location and obstacles in the path from Wireless client to AP. Metric is to be obtained from Linux-based client with the command \emph{iwconfig}.
-	\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave ovens, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, client and AP as we strive to identify which one experience the more and less noise to pinpoint where the complication might rely. Poor AP or client placement. Command \emph{cat /proc/net/wireless}.
-	\item \textbf{Busy Time} - We will measure it from the AP as it is the one servicing clients in a specific channel (channels), meaning that clients will be connecting to that serving channel. If the busy time of the channel is high, means there is interference or other AP and clients using the same channel. A corrective action can be switching to a less busy channel. The busy time is made of two components, WiFi (congestion) and non-Wi-Fi (interference). Command \emph{iw INTERFACE survey dump}	
+	\item \textbf{Throughput - Active} - We have actively measured throughput from the wired client. As the goal is to test the link between Wireless client towards the Wired Client and going through the AP, we have collected the data at the wired client. Previous works have identified that even with similar Wireless conditions devices can experience different throughput and bitrates \cite{measuring_user_traffic}. We use iPerf as the tool to collect this metric. Further details on iPerf setup to collect this metric are described in section \ref{Wireless Bottleneck Detector}.
+	
+	\item \textbf{PHY Tx Rate} - We have extracted this metric from WiFi logs at AP and Wireless client. The goal is to identify at which rate was the last frame prior to collecting the log sent. We have also added a wireless sniffer to collect packet captures of wireless traffic between wireless client and AP.
+	
+	\item \textbf{RSSI} - We extract logs from the Wireless client and the AP to obtain RSSI data from each of them. Different logs have been collected at these two vantage points to validate its accuracy.
+	
+	\item \textbf{Noise} - A factor contributing to Wireless degradation is Noise, it is the Wireless interference coming from non-Wi-Fi sources. This can be caused by Microwave ovens, cordless phones and similar devices which "do not speak Wi-Fi language". Noise will be measured at both ends, wireless client and AP. We strive to identify which one experiences higher noise levels to pinpoint where the complication might be located.
+	
+	\item \textbf{Frame Delivery Ratio - FDR } - To compute the FDR we have fetched driver debug logs from the AP and the Wireless client. The FDR can assist to identify which component, AP or Wireless device is experiencing a poor Wireless condition. For example when experiencing congestion, the AP can have a lower FDR than the AP as the AP location do not experience high channel utilization.
+	
+	\item \textbf{Throughput - Driver Logs} - From driver debug logs we collected Throughput at the AP and Wireless client. The goal is to validate the closeness between the perceived passive throughput between AP and wireless client.
+	
+	\item \textbf{RTT} - At the wired client we issue pings towards the wireless client. We log the ping output at the wired client to compute statistics from the RTT. Statistics collected from the RTT are minimum, average, maximum, standard deviation and losses.
+	
+	%\item \textbf{Losses} - From the Wired client we issue a pings toward the Wireless client. At the Wired client we log the output from the ping session and compute statistics from it. Loss rate is one of the statistics collected.
+	
+	%\item \textbf{Busy Time} - We will measure it from the AP as it is the one servicing clients in a specific channel (channels), meaning that clients will be connecting to that serving channel. If the busy time of the channel is high, means there is interference or other AP and clients using the same channel. A corrective action can be switching to a less busy channel. The busy time is made of two components, WiFi (congestion) and non-Wi-Fi (interference). Command \emph{iw INTERFACE survey dump}	
 		
 \end{itemize}
 		%\item Server
