@@ -36,6 +36,14 @@ Aaron Leonard and Shankar Ramanathan.
 \newblock How to get your 8821/792x wireless phones performing reliably, Jul
   2018.
 
+\bibitem{orbit2005}
+Maximilian Ott, Ivan Seskar, Robert Siraccusa, and Manpreet Singh.
+\newblock Orbit testbed software architecture: Supporting experiments as a
+  service.
+\newblock In {\em Testbeds and Research Infrastructures for the Development of
+  Networks and Communities, 2005. Tridentcom 2005. First International
+  Conference on}, pages 136--145. IEEE, 2005.
+
 \bibitem{observing_through_wifi_APs}
 Ashish Patro, Srinivas Govindan, and Suman Banerjee.
 \newblock Observing home wireless experience through wifi aps.
@@ -49,6 +57,11 @@ Changhua Pei, Youjian Zhao, Guo Chen, Ruming Tang, Yuan Meng, Minghua Ma, Ken
   wild.
 \newblock In {\em INFOCOM 2016-The 35th Annual IEEE International Conference on
   Computer Communications, IEEE}, pages 1--9. IEEE, 2016.
+
+\bibitem{raikov_decomposition}
+D~Raikov.
+\newblock On the decomposition of poisson laws.
+\newblock In {\em Dokl. Akad. Nauk SSSR}, volume~14, pages 9--12, 1937.
 
 \bibitem{measuring_user_traffic}
 Srikanth Sundaresan, Nick Feamster, and Renata Teixeira.
