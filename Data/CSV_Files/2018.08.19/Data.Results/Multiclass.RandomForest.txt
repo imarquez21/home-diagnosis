@@ -1,0 +1,67 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     Attenuation.AccessLink.Congestion.Multiclass_v2
+Instances:    750
+Attributes:   19
+              AP_RSSI
+              AP_Tx_Rate
+              AP_Noise
+              AP_MCS
+              AP_Throughput
+              AP_FDR
+              iPerf_Throughput
+              Client_RSSI
+              Client_Tx_Rate
+              Client_Noise
+              Client_MCS
+              Client_Throughput
+              Client_FDR
+              GoPing_Min
+              GoPing_Avg
+              GoPing_Max
+              GoPing_Std_Dev
+              GoPing_Loss
+              class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 0.1 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         749               99.8667 %
+Incorrectly Classified Instances         1                0.1333 %
+Kappa statistic                          0.9962
+Mean absolute error                      0.0086
+Root mean squared error                  0.0401
+Relative absolute error                  4.9114 %
+Root relative squared error             13.6296 %
+Total Number of Instances              750     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.998    0.000    1.000      0.998    0.999      0.996    1.000     1.000     0
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     1
+                 1.000    0.001    0.980      1.000    0.990      0.989    1.000     1.000     2
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     3
+Weighted Avg.    0.999    0.000    0.999      0.999    0.999      0.996    1.000     1.000     
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 599   0   1   0 |   a = 0
+   0  50   0   0 |   b = 1
+   0   0  50   0 |   c = 2
+   0   0   0  50 |   d = 3
+
+

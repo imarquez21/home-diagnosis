@@ -1,26 +1,25 @@
 \section{Results}\label{Results}
 
-\begin{table*}[bp]
+\begin{table}[bp]
 	\begin{center}
-		\begin{tabular}{|| m{2cm} | m{2cm}| m{2cm} | m{2cm}| m{2cm} | m{2cm}  ||}
+		\begin{tabular}{|| m{2.5cm} | m{2cm} | m{2cm}| m{2cm} | m{2cm}| m{2cm} | m{2cm}  ||}
 			\hline
-			Attribute Algorithm & Correctly Classified & Incorrectly Classified & RMSE & Precision & Recall \\
+			Attribute-Algorithm & Dataset & Correctly Classified & Incorrectly Classified & RMSE & Precision & Recall \\ [0.5ex] 
 			\hline\hline
-			J.48 & 99.475\% & 0.53\% & 0.06 & 0.99 & 0.99 \\
-			\hline
-			AdaboostM1 & 99.733\% & 0.27\% & 0.05 & 0.99 & 0.99 \\
-			\hline
-			Random Forest & 100.00\% & 0.00\% & 0.03 & 1.00 & 1.00 \\
+			\multirow{2}{*}{J.48} & Binary & 99.47\% & 0.53\% & 0.06 & 0.99 & 0.99 \\
+			& Multiclass & 98.66\% & 1.33\% & 0.07 & 0.98 & 0.98 \\
+			\multirow{2}{*}{Adaboost} & Binary & 99.73\% & 0.27\% & 0.05 & 0.99 & 0.99 \\
+			& Multiclass & 85.73\% & 14.26\% & 0.20 & 0.99 & 0.85 \\
+			\multirow{2}{*}{Random Forest} & Binary & 100.00\% & 0.00\% & 0.03 & 1.00 & 1.00 \\
+			& Multiclass & 99.86\% & 0.13\% & 0.04 & 0.99 & 0.99 \\
 			\hline
 		\end{tabular}
 	\end{center}
-	\caption{Binary Dataset - Weka classification results}
-	\label{table:binary_results}
-\end{table*}
+\end{table}
 
 After completing our experiments we proceeded to the classification phase. Our experiments were designed in a way in which each specific issue was associated to a specific minute within the 10 min experiment session. In other words, each experiment session consisted in 10 epochs, each one 60 sec long. Depending on the scenario; congestion, attenuation or access link, we knew at which epoch was the issue triggered. We labeled each epoch depending on the issue. From our results we created two datasets, binary and multiclass. In the binary dataset we only worked with two labels. The labeling schema for the binary dataset is described in table \ref{table:binary_labels}.
 
-\begin{table}[h!]
+\begin{table}[!h]
 	\begin{center}
 		\begin{tabular}{||c c||} 
 			\hline
@@ -40,10 +39,10 @@ After completing our experiments we proceeded to the classification phase. Our e
 	\end{center}
 \end{table}
 
-As it can be seen in table \ref{table:binary_labels}, even though ``access link limiting" is a network issue it shares the same label as ``no issue at all". They both share the same label as access link limiting nature is non-Wireless.
+As described in table \ref{table:binary_labels}, even though ``access link limiting" is a network issue it shares the same label as ``no issue at all". They both share the same label as access link limiting nature is non-Wireless.
 The second type of dataset is multiclass. In multiclass dataset we assign a different label to each event. The labeling for the multiclass dataset is described in table \ref{table:multiclass_labels}.
 
-\begin{table}[h!]
+\begin{table}[!h]
 	\begin{center}
 		\begin{tabular}{||c c||} 
 			\hline
@@ -63,11 +62,10 @@ The second type of dataset is multiclass. In multiclass dataset we assign a diff
 	\end{center}
 \end{table}
 
-To test classification in our dataset we used \emph{Weka}. Weka is a software which has different machine learning algorithms for data mining. We focused on the classification feature and fed our datasets to test the accuracy of different algorithms. For both datasets we ran the algorithms J.48, AdaBoostA1 and random forest. We used the default 10 fold cross-validation in Weka. The results obtained from the binary dataset are outlined in table \ref{table:binary_results}. 
+To test classification in our dataset we used \emph{Weka}. Weka is a software which has different machine learning algorithms for data mining. We focused on the classification feature and fed our datasets to test the accuracy of different algorithms. For both datasets we ran the algorithms J.48, AdaBoostA1 and random forest. We used the default 10 fold cross-validation in Weka. The results obtained from the binary dataset are outlined in table \ref{table:binary_results}. The best results are obtained with the ``random forest" algorithm. The next step was to feed Weka with the multiclass dataset. As mentioned before, with the multiclass dataset the goal is to classify the issues in more detail. The obtained results are summarized in table \ref{table:multiclass_results}. Once again the best results were obtained with the random forest algorithm. 
+These results summarize the first stage of the tool we strive to develop. We can conclude that the potential algorithm to be used for our tool can be random forest. We consider it a potential algorithm as it achieved the best results from both datasets created from our experiments. We can also conclude that the set of features and metrics collected in our experiments result in an high accuracy classification level. The next step is to extend the number of samples we collected to test our results against a bigger dataset to increase the robustness of our results. The final goal is to deploy the WiFi impairment detector in the wild.
 
-
-
-%The best results are obtained with the ``random forest" algorithm. By running these test we have validated that the amount of attribute defined helps us to properly classify the algorithms.
-
+% By running these test we have validated that the amount of attribute defined helps us to properly classify the algorithms.
+\newpage
 
 
