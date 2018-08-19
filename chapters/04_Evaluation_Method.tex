@@ -55,21 +55,72 @@ Each of the nodes has an Atheros Wireless card, the models are Atheros 5K and 9K
 \end{table} 
 
 
+\subsection*{Experiments Setup}
 
-\textbf{Main ideas for Orbit test bed description}
+In order to trigger WiFi and non-WiFi issues we setup three main scenarios in Orbit SB4 testbed. Two of them were associated to WiFi issues, attenuation and congestion. The third one was an issue at the access link. Across the three scenarios logging, GoPing, Wireless capture and iPerf measurement are similar. Our experiment sessions lasted for 10 min. During the session we collected Wireless stats logs every 10 secs at the AP and Wireless client. We also setup a Wireless a Sniffer to obtain Over-the-Air packet captures. From the wired client we sent the pings towards the AP and log the stats from GoPing. For the throughput measurement with iPerf, we setup iPerf server at the wireless node and the iPerf client at the wired node. iPerf was setup in TCP mode with 4 parallel TCP streams. We chose TCP as it is transport protocol most commonly used by services at Home WiFi networks. We decided to work with 4 parallel streams as within a Home WiFi the number of TCP in average is below 5 TCP streams \textbf{[We need a reference here]}.
 
-\begin{enumerate}
-	\item Orbit is a testbed mostly devoted to Wireless experiments. (Mostly as they also have SDN sandboxes to test SDN technologies)
-	\item We have been using the Sandbox 4, SB4, which is devoted to Wi-Fi and Wi-Max Experiments.
-	\item SB4 is made of 9 nodes, each of them runs Linux based systems, Ubuntu 12.04 to be precise.
-	\item Our main setup is composed by three nodes. One node plays the role of the AP, another the role of Wireless client and the last one is a Wired client.
-	\item We are using 802.11n in 2.4GHz band to improve the reachability of the AP and the Wireless client.
-	\item The wired client is the source of the probes and iPerf server.
-	\item Wireless client plays the role of iPerf client.
-	\item We can include a diagram of the Orbit SB4 deployment and include the proper references.
-\end{enumerate}
+\subsection*{Attenuation}
 
-\textbf{Main ideas for the evaluation methods}
+To trigger attenuation impairments in the testbed we varied the attenuation at the link between the wireless client and the access point. The deployment we worked with derived from the one illustrated in figure \ref{image:In_Office_Lab_Deployment}.  The only additional component is the node working as a wireless sniffer. The attenuation issue was triggered in third and ninth minute of the 10 min session. The experiment was designed this way to set a comparison between non-issue and issue conditions. We setup 5 scenarios with an increase of 3 dBm per impairment interval. Table \ref{table:Attenuation_Experiment_Values} breakdowns the scenarios and the attenuation levels for each impairment interval. Each one of the experiments was run 5 times.
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|| m{5em} | m{2cm}| m{2cm} ||}
+			\hline
+			\multirow{2}{*}{Scenario} & \multicolumn{2}{c||}{Attenuation Value {[}dBm{]}} \\ \cline{2-3} 
+			& \multicolumn{1}{l|}{1st Interval} & \multicolumn{1}{l||}{2nd Interval} \\ \hline\hline
+			1 & 3 & 6 \\ \hline
+			2 & 9 & 12 \\ \hline
+			3 & 15 & 18 \\ \hline
+			4 & 21 & 24 \\ \hline
+			5 & 27 & 30 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Attenuation Scenarios and Values}
+	\label{table:Attenuation_Experiment_Values}
+\end{table}
+
+\subsection*{Congestion}
+
+To trigger congestion in our testbed, we connected more wireless nodes to the same AP our main wireless client was connecting to. At the 4th and 8th minute we connected an additional wireless node to the AP. The additional wireless node client sent iPerf UDP traffic to the AP, hence the AP was running an iPerf server instance. We increased by one the wireless nodes connected to the AP by one per issue interval. Table \ref{table:Congestion_Experiment_Values} consolidates the scenarios and number of wireless nodes connected to the AP.
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|| m{5em} | m{2cm}| m{2cm} ||}
+			\hline
+			\multirow{2}{*}{Scenario} & \multicolumn{2}{l||}{Connected Wireless Nodes} \\ \cline{2-3} 
+			& \multicolumn{1}{l|}{1st Interval} & \multicolumn{1}{l||}{2nd Interval} \\ \hline\hline
+			1 & 1 & 1 \\ \hline
+			2 & 2 & 2 \\ \hline
+			3 & 3 & 3 \\ \hline
+			4 & 4 & 4 \\ \hline
+			5 & 5 & 5 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Congestion Scenarios and Values}
+	\label{table:Congestion_Experiment_Values}
+\end{table}
+
+\subsection*{Access Link Limiting}
+
+The third scenario experimented in the testbed was a non-WiFi issue. The issue consisted in limiting the access link capacity at the Wired node. We achieved limiting at the wired node by using \emph{tc} which is a traffic shaper. In a similar way to the attenuation scenario, we triggered the issue at the 3rd and 9th minute of the 10 min experiment window. Table \ref{table:Access_Link_Experiment_Values} details the scenarios and values used for the Access Link Limiting scenario.
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|| m{5em} | m{2cm}| m{2cm} ||}
+			\hline
+			\multirow{2}{*}{Scenario} & \multicolumn{2}{c||}{Throughput {[}Mbps{]}} \\ \cline{2-3} 
+			& \multicolumn{1}{l|}{1st Interval} & \multicolumn{1}{l||}{2nd Interval} \\ \hline\hline
+			1 & 100 & 90 \\ \hline
+			2 & 80 & 70 \\ \hline
+			3 & 60 & 50 \\ \hline
+			4 & 40 & 30 \\ \hline
+			5 & 20 & 10 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Access Link Limiting Scenarios and Values}
+	\label{table:Access_Link_Experiment_Values}
+\end{table}
 
 \begin{itemize}
 	\item \textbf{Attenuation}
@@ -88,6 +139,24 @@ Each of the nodes has an Atheros Wireless card, the models are Atheros 5K and 9K
 		\item Once the attenuation values have been identified the next step is to run ping tests using the attenuation values found with iPerf test and record the average RTTs.
 		
 	\end{itemize}
+
+
+\textbf{Main ideas for Orbit test bed description}
+
+\begin{enumerate}
+	\item Orbit is a testbed mostly devoted to Wireless experiments. (Mostly as they also have SDN sandboxes to test SDN technologies)
+	\item We have been using the Sandbox 4, SB4, which is devoted to Wi-Fi and Wi-Max Experiments.
+	\item SB4 is made of 9 nodes, each of them runs Linux based systems, Ubuntu 12.04 to be precise.
+	\item Our main setup is composed by three nodes. One node plays the role of the AP, another the role of Wireless client and the last one is a Wired client.
+	\item We are using 802.11n in 2.4GHz band to improve the reachability of the AP and the Wireless client.
+	\item The wired client is the source of the probes and iPerf server.
+	\item Wireless client plays the role of iPerf client.
+	\item We can include a diagram of the Orbit SB4 deployment and include the proper references.
+\end{enumerate}
+
+\textbf{Main ideas for the evaluation methods}
+
+
 
 	%\item \textbf{Wi-Fi Interference}
 	%\begin{itemize}
