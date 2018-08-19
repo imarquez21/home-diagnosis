@@ -1,0 +1,293 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.AdaBoostM1 -P 100 -S 1 -I 10 -W weka.classifiers.trees.DecisionStump
+Relation:     Attenuation.AccessLink.Congestion.Binary
+Instances:    750
+Attributes:   20
+              Test ID
+              AP_RSSI
+              AP_Tx_Rate
+              AP_Noise
+              AP_MCS
+              AP_Throughput
+              AP_FDR
+              iPerf_Throughput
+              Client_RSSI
+              Client_Tx_Rate
+              Client_Noise
+              Client_MCS
+              Client_Throughput
+              Client_FDR
+              GoPing_Min
+              GoPing_Avg
+              GoPing_Max
+              GoPing_Std_Dev
+              GoPing_Loss
+              class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+AdaBoostM1: Base classifiers and their weights: 
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 846.800299 : 0
+GoPing_Avg > 846.800299 : 1
+GoPing_Avg is missing : 0
+
+Class distributions
+
+GoPing_Avg <= 846.800299
+0	1	
+1.0	0.0	
+GoPing_Avg > 846.800299
+0	1	
+0.047619047619047616	0.9523809523809523	
+GoPing_Avg is missing
+0	1	
+0.8666666666666667	0.13333333333333333	
+
+
+Weight: 5.0
+
+Decision Stump
+
+Classifications
+
+GoPing_Min <= 686.425 : 0
+GoPing_Min > 686.425 : 1
+GoPing_Min is missing : 0
+
+Class distributions
+
+GoPing_Min <= 686.425
+0	1	
+0.9747191011235958	0.025280898876404143	
+GoPing_Min > 686.425
+0	1	
+0.030303030303012544	0.9696969696969875	
+GoPing_Min is missing
+0	1	
+0.932885906040269	0.06711409395973093	
+
+
+Weight: 3.64
+
+Decision Stump
+
+Classifications
+
+iPerf_Throughput <= 39.443504000000004 : 1
+iPerf_Throughput > 39.443504000000004 : 0
+iPerf_Throughput is missing : 0
+
+Class distributions
+
+iPerf_Throughput <= 39.443504000000004
+0	1	
+0.10838739120513442	0.8916126087948656	
+iPerf_Throughput > 39.443504000000004
+0	1	
+1.0000000000000007	-6.614430987045712E-16	
+iPerf_Throughput is missing
+0	1	
+0.5042772219805615	0.4957227780194386	
+
+
+Weight: 2.75
+
+Decision Stump
+
+Classifications
+
+AP_RSSI <= -69.5 : 1
+AP_RSSI > -69.5 : 0
+AP_RSSI is missing : 0
+
+Class distributions
+
+AP_RSSI <= -69.5
+0	1	
+0.09800299724671264	0.9019970027532873	
+AP_RSSI > -69.5
+0	1	
+0.9803890199842675	0.019610980015732363	
+AP_RSSI is missing
+0	1	
+0.7362442382982017	0.2637557617017983	
+
+
+Weight: 3.14
+
+Decision Stump
+
+Classifications
+
+AP_Throughput <= 51.6 : 1
+AP_Throughput > 51.6 : 0
+AP_Throughput is missing : 0
+
+Class distributions
+
+AP_Throughput <= 51.6
+0	1	
+0.20876968249227926	0.7912303175077208	
+AP_Throughput > 51.6
+0	1	
+0.9983040853284509	0.0016959146715490934	
+AP_Throughput is missing
+0	1	
+0.6981133371110746	0.3018866628889254	
+
+
+Weight: 2.44
+
+Decision Stump
+
+Classifications
+
+AP_MCS = MCS7 : 0
+AP_MCS != MCS7 : 1
+AP_MCS is missing : 0
+
+Class distributions
+
+AP_MCS = MCS7
+0	1	
+0.9234553538184407	0.07654464618155933	
+AP_MCS != MCS7
+0	1	
+0.0	1.0	
+AP_MCS is missing
+0	1	
+0.8298918663800681	0.17010813361993193	
+
+
+Weight: 2.61
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 939.105384 : 0
+GoPing_Avg > 939.105384 : 1
+GoPing_Avg is missing : 1
+
+Class distributions
+
+GoPing_Avg <= 939.105384
+0	1	
+0.797966270825865	0.20203372917413498	
+GoPing_Avg > 939.105384
+0	1	
+0.00930339988591411	0.9906966001140859	
+GoPing_Avg is missing
+0	1	
+0.44559829513836446	0.5544017048616354	
+
+
+Weight: 2.03
+
+Decision Stump
+
+Classifications
+
+GoPing_Avg <= 846.800299 : 0
+GoPing_Avg > 846.800299 : 1
+GoPing_Avg is missing : 1
+
+Class distributions
+
+GoPing_Avg <= 846.800299
+0	1	
+1.0	0.0	
+GoPing_Avg > 846.800299
+0	1	
+0.10526651169306911	0.8947334883069308	
+GoPing_Avg is missing
+0	1	
+0.26759110953583654	0.7324088904641634	
+
+
+Weight: 2.36
+
+Decision Stump
+
+Classifications
+
+GoPing_Std_Dev <= 130.152509 : 1
+GoPing_Std_Dev > 130.152509 : 0
+GoPing_Std_Dev is missing : 0
+
+Class distributions
+
+GoPing_Std_Dev <= 130.152509
+0	1	
+0.15827878460895833	0.8417212153910416	
+GoPing_Std_Dev > 130.152509
+0	1	
+0.9867431728904255	0.0132568271095745	
+GoPing_Std_Dev is missing
+0	1	
+0.5992646636434288	0.40073533635657116	
+
+
+Weight: 2.43
+
+Decision Stump
+
+Classifications
+
+iPerf_Throughput <= 38.5616665 : 1
+iPerf_Throughput > 38.5616665 : 0
+iPerf_Throughput is missing : 0
+
+Class distributions
+
+iPerf_Throughput <= 38.5616665
+0	1	
+0.4089870947654786	0.5910129052345213	
+iPerf_Throughput > 38.5616665
+0	1	
+0.9916580504717974	0.008341949528202563	
+iPerf_Throughput is missing
+0	1	
+0.7422782827219481	0.2577217172780519	
+
+
+Weight: 1.52
+
+Number of performed Iterations: 10
+
+
+Time taken to build model: 0.1 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         748               99.7333 %
+Incorrectly Classified Instances         2                0.2667 %
+Kappa statistic                          0.9886
+Mean absolute error                      0.0029
+Root mean squared error                  0.0515
+Relative absolute error                  1.2663 %
+Root relative squared error             15.1441 %
+Total Number of Instances              750     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.997    0.000    1.000      0.997    0.998      0.989    1.000     1.000     0
+                 1.000    0.003    0.980      1.000    0.990      0.989    1.000     0.999     1
+Weighted Avg.    0.997    0.000    0.997      0.997    0.997      0.989    1.000     1.000     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 648   2 |   a = 0
+   0 100 |   b = 1
+
+

@@ -1,0 +1,63 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     Attenuation.AccessLink.Congestion.Binary
+Instances:    750
+Attributes:   20
+              Test ID
+              AP_RSSI
+              AP_Tx_Rate
+              AP_Noise
+              AP_MCS
+              AP_Throughput
+              AP_FDR
+              iPerf_Throughput
+              Client_RSSI
+              Client_Tx_Rate
+              Client_Noise
+              Client_MCS
+              Client_Throughput
+              Client_FDR
+              GoPing_Min
+              GoPing_Avg
+              GoPing_Max
+              GoPing_Std_Dev
+              GoPing_Loss
+              class
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 0.17 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         750              100      %
+Incorrectly Classified Instances         0                0      %
+Kappa statistic                          1     
+Mean absolute error                      0.0076
+Root mean squared error                  0.036 
+Relative absolute error                  3.291  %
+Root relative squared error             10.6044 %
+Total Number of Instances              750     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     0
+                 1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     1
+Weighted Avg.    1.000    0.000    1.000      1.000    1.000      1.000    1.000     1.000     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 650   0 |   a = 0
+   0 100 |   b = 1
+

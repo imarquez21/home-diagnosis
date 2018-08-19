@@ -1,15 +1,73 @@
 \section{Results}\label{Results}
 
-In the closing section we summarize what we have achieved, similar to what we have discussed at the closing of the previous section, \ref{Evaluation_Method}.
+\begin{table*}[bp]
+	\begin{center}
+		\begin{tabular}{|| m{2cm} | m{2cm}| m{2cm} | m{2cm}| m{2cm} | m{2cm}  ||}
+			\hline
+			Attribute Algorithm & Correctly Classified & Incorrectly Classified & RMSE & Precision & Recall \\
+			\hline\hline
+			J.48 & 99.475\% & 0.53\% & 0.06 & 0.99 & 0.99 \\
+			\hline
+			AdaboostM1 & 99.733\% & 0.27\% & 0.05 & 0.99 & 0.99 \\
+			\hline
+			Random Forest & 100.00\% & 0.00\% & 0.03 & 1.00 & 1.00 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Binary Dataset - Weka classification results}
+	\label{table:binary_results}
+\end{table*}
 
-Based on the tool and the methodology we used we outline the results we obtained.
+After completing our experiments we proceeded to the classification phase. Our experiments were designed in a way in which each specific issue was associated to a specific minute within the 10 min experiment session. In other words, each experiment session consisted in 10 epochs, each one 60 sec long. Depending on the scenario; congestion, attenuation or access link, we knew at which epoch was the issue triggered. We labeled each epoch depending on the issue. From our results we created two datasets, binary and multiclass. In the binary dataset we only worked with two labels. The labeling schema for the binary dataset is described in table \ref{table:binary_labels}.
 
-What are our results telling us?
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{||c c||} 
+			\hline
+			Label & Issue Type\\ [0.5ex] 
+			\hline\hline
+			0 & No Issue at all \\ 
+			\hline
+			1 & Attenuation\\
+			\hline
+			0 & Access-Link Limiting \\
+			\hline
+			1 & Congestion \\[1ex] 
+			\hline
+		\end{tabular}
+		\caption{Binary dataset labels}
+		\label{table:binary_labels}
+	\end{center}
+\end{table}
 
-Can we identify impairments from the chosen metrics?
+As it can be seen in table \ref{table:binary_labels}, even though ``access link limiting" is a network issue it shares the same label as ``no issue at all". They both share the same label as access link limiting nature is non-Wireless.
+The second type of dataset is multiclass. In multiclass dataset we assign a different label to each event. The labeling for the multiclass dataset is described in table \ref{table:multiclass_labels}.
 
-Which of the two methods, active or passive, can be considered to best suit the detection of Wireless impairments?
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{||c c||} 
+			\hline
+			Label & Issue Type\\ [0.5ex] 
+			\hline\hline
+			0 & No Issue at all \\ 
+			\hline
+			1 & Attenuation\\
+			\hline
+			2 & Access-Link Limiting \\
+			\hline
+			3 & Congestion \\[1ex] 
+			\hline
+		\end{tabular}
+		\caption{Multiclass dataset labels}
+		\label{table:multiclass_labels}
+	\end{center}
+\end{table}
 
-Why is the chosen method more suitable?
+To test classification in our dataset we used \emph{Weka}. Weka is a software which has different machine learning algorithms for data mining. We focused on the classification feature and fed our datasets to test the accuracy of different algorithms. For both datasets we ran the algorithms J.48, AdaBoostA1 and random forest. We used the default 10 fold cross-validation in Weka. The results obtained from the binary dataset are outlined in table \ref{table:binary_results}. 
 
-Future Work can be mentioned to describe the integration of this work with the project with Princeton.
+
+
+%The best results are obtained with the ``random forest" algorithm. By running these test we have validated that the amount of attribute defined helps us to properly classify the algorithms.
+
+
+

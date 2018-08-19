@@ -122,120 +122,18 @@ The third scenario experimented in the testbed was a non-WiFi issue. The issue c
 	\label{table:Access_Link_Experiment_Values}
 \end{table}
 
-\begin{itemize}
-	\item \textbf{Attenuation}
-	\begin{itemize}
-		\item We have been using the embedded manger for attenuation in Orbit.
-		\item We can instrument attenuation values on the links connecting the nodes, in our case we vary the attenuation values between Wireless client and AP.
-		\item Attenuation controller allows to define values in the range from 0 - 30 dBm.
-		\item For our experiment we have been varying the values from 0 to 30 in steps of 3.
-		\item We vary the attenuation and record the RTTs for pings.
-		\item We have identified that after 27 dBm of attenuation is when we begin to see an increase in RTTs, each session last 10 min. Probe rate every 200msec.
-		\item At 30 dBm the connectivity between Wireless client and AP is lost.
-		\item For bandwidth test we have run iPerf and recorded the bandwidth obtained at the client side.
-		\item \textbf{With 5GHz we identified that after 6dBm the connectivity between client and AP is lost.}
-		\item We have setup 802.11n using 2.4GHz band to increase the range.
-		\item The goal is to run iPerf and identify at which attenuation levels does the bitrates drops, record the attenuation values to run ping tests.
-		\item Once the attenuation values have been identified the next step is to run ping tests using the attenuation values found with iPerf test and record the average RTTs.
-		
-	\end{itemize}
-
-
-\textbf{Main ideas for Orbit test bed description}
-
-\begin{enumerate}
-	\item Orbit is a testbed mostly devoted to Wireless experiments. (Mostly as they also have SDN sandboxes to test SDN technologies)
-	\item We have been using the Sandbox 4, SB4, which is devoted to Wi-Fi and Wi-Max Experiments.
-	\item SB4 is made of 9 nodes, each of them runs Linux based systems, Ubuntu 12.04 to be precise.
-	\item Our main setup is composed by three nodes. One node plays the role of the AP, another the role of Wireless client and the last one is a Wired client.
-	\item We are using 802.11n in 2.4GHz band to improve the reachability of the AP and the Wireless client.
-	\item The wired client is the source of the probes and iPerf server.
-	\item Wireless client plays the role of iPerf client.
-	\item We can include a diagram of the Orbit SB4 deployment and include the proper references.
-\end{enumerate}
-
-\textbf{Main ideas for the evaluation methods}
-
-
-
-	%\item \textbf{Wi-Fi Interference}
-	%\begin{itemize}
-	%	\item To create Wi-Fi interference we will deploy a 2nd Wireless client and 2nd AP.
-	%	\item These two nodes will be set to operate in the same channel as the first Wireless client and AP.
-	%	\item The goal is to create an interference in which the source of the interference speaks Wi-Fi, meaning it can request time transmit, wait for the other station to transmit and transmit.
-	%\end{itemize}
-	
-	\item \textbf{Interference}
-	\begin{itemize}
-		\item Currently looking for a way to create Noise in SB4.
-		\item Check if for a specific time they can setup a Microwave oven or similar.
-		
-	\end{itemize}
-	
-	
-	
-	\item Congestion
-	\begin{itemize}
-		\item For this experiment we will deploy a second wireless client connected to the same AP.
-		\item The 2nd Wireless client will send traffic to the iPerf server located in the wired client.
-		\item The original client will continue to send pings to the wired client.
-		\item We will record the results of RTT while other client is sending traffic to the iPerf Server.
-		
-	\end{itemize}
-	
-	
-\end{itemize}
-
-
-We used three nodes with.
-Atheros 9k and 5k wireless cards.
-
-We configure a node to work as a Wireless station, another as an AP and finally a third one as a wired client from where the pings were issued.
-
-The third node working as a wired client plays a similar role as the Pi in our In-lab setup.
-
-
-\subsection{Setup of testbed}
-
-Here we explain how we ran the experiments.
-
 \subsection{RSSI in the wild}
 
-In order to collect realistic metric from can be considered a common value of RSSI in the wild we ran survey to collect this metric. We asked our colleagues in our office to run a script from which's output we can extract the RSSI value. We obtained ~760 samples metrics coming from different environment contexts,  mainly home and offices. We found RSSI average value in the wild to range between -60 and -60 [dBm]. Following picture depicts the histogram of RSSI obtained from the survey.
+With regards to the attenuation scenario we ran a survey to find the common RSSI value in home and office environment. We asked the colleagues at our office to run a script on their laptops. From the 760 samples collected we extracted the RSSI and found the most common values. We found the most common RSSI value from our survey ranged between -60 and - 65 dBm. Figure \ref{fig:RSSI_Histogram} illustrates the RSSI histogram of our survey.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=8cm]{RSSI_Stats/RSSI_Histogram}
 	\caption{RSSI Survey Values Histogram}
-	\label{fig:vSDN_Controller_DC}
+	\label{fig:RSSI_Histogram}
 \end{figure}
 
-
-The main goal of this exercise is setup our testbed attenuation settings to trigger an RSSI value similar to the one found with the survey. In our testbed the attenuation values which lead to an RSSI value between the found range are 0, 3 and 6 [dBm] in the 2.4 GHz band.
-
-
-We can include the accuracy of our methods depending on where are we setting our Vantage point.ex
-
-In our lab we placed the laptop and the Pi close to each other, a distance smaller than 5 m. We connected to the 5GHz band under 802.11n protocol.
-
-The first set of experiments consisted in progressively adding TCP sessions. The goal was to perceive how was RTT changed with more TCP sessions. We expected to see an increase as more TCP session were added.
-
-Results matched our expectation and saw an increase in average RTT as more TCP session were added.
-
-\textbf{Include plot in which we have the CDF of RTTs vs TCP Streams}
-
-The next set of experiments were ran with the goal of finding a suitable probing rate. The ideal case is to probe frequent enough to have a "good" sense of the network without adding overhead and disrupting the Wireless Network.
-
-We issued pings in sessions of 10 min at a ping rate of 100msec, initially, we call this aggressive scenario. The rate was defined to be 100msec to set our baseline from which we derived our sampling to obtain a suitable probing rate. The main goal is to achieve a rate which is not as aggressive as probing every 100msec.
-
-After completing our sample analysis, we define it to be 200msec and we proceed to run test in Orbit where we can modify parameters as attenuation.
-
-Orbit lab allow to modify attenuation from 0 dB to 30 dB. We perceived an increase in average RTT and loss rate from 27dB to 29dB. (At 30 dB link is unusable).
-
-The results are show in the following plots.
-
-\textbf{Include Plots with Avg RTTs and Loss Rate results from Orbit}
-
+The main goal of this exercise was to validate attenuation values to be used which led to the similar RSSI values in our testbed . In the SB4 testbed we worked with attenuation values of 0, 3 and 6 [dBm] led to RSSI values between -60 and -65 dBm. These values are included in the attenuation scenarios we worked with.
 
 
 
