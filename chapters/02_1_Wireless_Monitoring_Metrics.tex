@@ -5,7 +5,7 @@
 \subsection{Active}
 
 Active measurement is a technique in which traffic is injected in the network to get a sense of the network status. The injected packets are called probes. For our work we use active measurements to obtain metrics on bandwidth, Round-Trip Time (RTT) and packet loss. In the WiFi context, bandwidth active measurements can help to identify where the bottleneck is happening. We have also used active bandwidth measurement tools to generate traffic in our experimental setup to resemble real-case scenarios. High RTT can help to identify if congestion is happening in the home WiFi. In a similar way, packet loss can denote interference as frames are destroyed in the WiFi link. While using active measurements it is  important to pay attention to the probes size and probing rate. Large probe sizes and aggressive probing rate can cause overhead. Overhead does not only disrupts user traffic but can also lead to biased measurements. In the following bullet points we outline the strengths and weaknesses of active measurement techniques within our framework. We also include the ones we work with for this paper.
-\\
+
 
 \textbf{Strengths}
 \begin{itemize}
@@ -46,7 +46,6 @@ Under the scope of active measurement techniques, the following are the metrics 
 
 Passive measurement techniques rely on a ``listen and sit" approach. The instrument conducting passive measurements in the network sits in a specific location along the path and records the metrics of interest. The monitor can be a component of the network itself, for example a router. It can also be device devoted to measure, such as a Wireless sniffer. An important difference between active and passive techniques is that the latter do not trigger probes. Overhead due to probe packets is not present in passive measurements. However, computational and storage resources in the passive measuring device are important factors to consider. The device might require to have enough space to store the data being collected. In a similar way, the computational power of the device can be required to be high depending on the speed of the link being measured. A Gigabit link in a Core Router will handle significantly more data than an 100Mbps Ethernet link in an access switch. 
 Outlined in the following list a high level summary of the key strength and weaknesses of passive measurement techniques for our work purposes. We also outline the ones we use for our work.
-\\
 
 \textbf{Strength}
 \begin{itemize}
@@ -60,8 +59,6 @@ Outlined in the following list a high level summary of the key strength and weak
 	\item Access to equipment working as passive measurement device is required. This is not possible for most users at multiple devices along an Internet path.
 	\item High computational power on the measuring device can be required depending on the link being monitored and data granularity pursued. Not all devices can provide high computational power, i.e. Access Points.
 \end{itemize}
-
-\subsection*{Passive Metrics}
 
 \begin{itemize}
 	%\item \textbf{PHY Tx Rate}
@@ -97,7 +94,7 @@ Outlined in the following list a high level summary of the key strength and weak
 		\item In a similar way as for actively measuring throughput, in collaboration with other metric we narrow down the potential WiFi impairment.
 		\item Additionally, passively measuring bandwidth help to validate we obtain similar values as for actively measuring it.
 	\end{itemize}
-	
+	\newpage
 	\item \textbf{Frame Delivery Ratio}
 	\begin{itemize}
 		\item Frame Delivery Ratio depicts the ratio between packets successfully received and total packet sent. The FDR metric can assist to get a sense of link quality. Low FDR indicates poor link quality. 

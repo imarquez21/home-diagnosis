@@ -31,11 +31,6 @@ Kyung-Hwa Kim, Hyunwoo Nam, and Henning Schulzrinne.
   users.
 \newblock In {\em INFOCOM}, pages 862--870, 2014.
 
-\bibitem{Cisco_VoWLAN_Guide}
-Aaron Leonard and Shankar Ramanathan.
-\newblock How to get your 8821/792x wireless phones performing reliably, Jul
-  2018.
-
 \bibitem{orbit2005}
 Maximilian Ott, Ivan Seskar, Robert Siraccusa, and Manpreet Singh.
 \newblock Orbit testbed software architecture: Supporting experiments as a
@@ -75,5 +70,11 @@ Srikanth Sundaresan, Nick Feamster, and Renata Teixeira.
   bottlenecks.
 \newblock In {\em International Conference on Passive and Active Network
   Measurement}, pages 111--123. Springer, 2016.
+
+\bibitem{WLAN_Troubleshooting}
+Ilias Syrigos, Stratos Keranidis, Thanasis Korakis, and Constantine Dovrolis.
+\newblock Enabling wireless lan troubleshooting.
+\newblock In {\em International Conference on Passive and Active Network
+  Measurement}, pages 318--331. Springer, 2015.
 
 \end{thebibliography}
