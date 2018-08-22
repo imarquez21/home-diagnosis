@@ -4,7 +4,8 @@
 	\begin{center}
 		\begin{tabular}{|| m{2.5cm} | m{2cm} | m{2cm}| m{2cm} | m{2cm}| m{2cm} | m{2cm}  ||}
 			\hline
-			Attribute-Algorithm & Dataset & Correctly Classified & Incorrectly Classified & RMSE & Precision & Recall \\ [0.5ex] 
+			%\diagbox{Attribute}{Algorithm}
+			 Attribute-Algorithm & Dataset & Correctly Classified & Incorrectly Classified & RMSE & Precision & Recall \\ [0.5ex] 
 			\hline\hline
 			\multirow{2}{*}{J.48} & Binary & 99.47\% & 0.53\% & 0.06 & 0.99 & 0.99 \\
 			& Multiclass & 98.66\% & 1.33\% & 0.07 & 0.98 & 0.98 \\
@@ -14,6 +15,8 @@
 			& Multiclass & 99.86\% & 0.13\% & 0.04 & 0.99 & 0.99 \\
 			\hline
 		\end{tabular}
+		\caption{Classification Results}
+		\label{table:classification_results}
 	\end{center}
 \end{table}
 
@@ -62,7 +65,7 @@ The second type of dataset is multiclass. In multiclass dataset we assign a diff
 	\end{center}
 \end{table}
 
-To test classification in our dataset we used \emph{Weka}. Weka is a software which has different machine learning algorithms for data mining. We focused on the classification feature and fed our datasets to test the accuracy of different algorithms. For both datasets we ran the algorithms J.48, AdaBoostA1 and random forest. We used the default 10 fold cross-validation in Weka. The results obtained from the binary dataset are outlined in table \ref{table:binary_results}. The best results are obtained with the ``random forest" algorithm. The next step was to feed Weka with the multiclass dataset. As mentioned before, with the multiclass dataset the goal is to classify the issues in more detail. The obtained results are summarized in table \ref{table:multiclass_results}. Once again the best results were obtained with the random forest algorithm. 
+To test classification in our dataset we used \emph{Weka}. Weka is a software which has different machine learning algorithms for data mining. We focused on the classification feature and fed our datasets to test the accuracy of different algorithms. For both datasets we ran the algorithms J.48, AdaBoostA1 and random forest. We used the default 10 fold cross-validation in Weka. The results obtained from the binary dataset are outlined in table \ref{table:classification_results}. The best results are obtained with the ``random forest" algorithm. The next step was to feed Weka with the multiclass dataset. As mentioned before, with the multiclass dataset the goal is to classify the issues in more detail. The obtained results are summarized in table \ref{table:classification_results}. Once again the best results were obtained with the random forest algorithm. 
 These results summarize the first stage of the tool we strive to develop. We can conclude that the potential algorithm to be used for our tool can be random forest. We consider it a potential algorithm as it achieved the best results from both datasets created from our experiments. We can also conclude that the set of features and metrics collected in our experiments result in an high accuracy classification level. The next step is to extend the number of samples we collected to test our results against a bigger dataset to increase the robustness of our results. The final goal is to deploy the WiFi impairment detector in the wild.
 
 % By running these test we have validated that the amount of attribute defined helps us to properly classify the algorithms.
