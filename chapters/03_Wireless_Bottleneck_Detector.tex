@@ -1,71 +1,150 @@
 \section{Wireless Bottleneck Detector}\label{Wireless Bottleneck Detector}
 
-We strive to identify Home WiFi impairments, to achieve our goal we run experiments and trigger WiFi and non-WiFi issues in a testbed.  During our experiment sessions we collect active and passive metrics using a diverse set of tools. Most of the tools we work with are out-of-the-box tools, such as iPerf, tc and tcpdump. The active measurement tool we use to collect RTTs is a custom implementation of Ping in GoLang. We refer to this tool as \emph{GoPing}. We have customized GoPing to send ping trains and batches. These two features were key to find the probing rate we use for our experiments.
+We strive to detect Home WiFi impairments, to achieve our goal we model our detector with as a classification problem. To train our model we ran experiments in a testbed and trigger WiFi impairments during the experiment window. From the experiments we collect the metrics described in Section \ref{Wireless Monitoring Metrics} and create dataset derived from them. Finally we consolidate our datasets and feed them into a supervised learning tool. 
 
-\subsection{Finding the probing rate}\label{probing_rate}
+\subsection{Labs Setup}
 
-As described in section \ref{Back_Related_Work}, finding the probing rate is important when working with active measurements. A high rate can cause overhead, whereas a low rate can fail to capture the status of the network. To approach this challenge we conducted experiments in our office lab. Our experiments consisted in sending a series of ping trains which included multiple pings inside each train. We ran the tests with different train inter-spacing values and with different amount of pings inside the trains. The first finding from our experiments was a delay in RTT due to power save mode in devices. The power save mode sends the NIC to sleep. We refer to this delay as the ``sleeping NIC". We found that when the inter-train spacing is smaller or equal to 100 msec the power save mode delay is not present. Based on this finding we set our lower bound for inter-train spacing to 100 msec. We set our upper bound to 1000 msec as the RTT within a home WiFi single-hop network is expected to be only a few milliseconds without significant cross-traffic. This observation is remarked in the work of Sundaresan et al. \cite{homeoraccesslink}.
+In order to run our experiment we work with two labs. A small In-office lab and a devoted testbed to run experiments mainly associated to wireless technologies.
 
-The second relevant finding is associated to the RTT value of each ping within a train. We found that even with inter-train spacing values above 100 msec it is possible to overcome sleeping NIC delay by considering the RTT value of the 3rd or greater ping within a train. We noticed that the RTT value for ping greater or equal to the 3rd ping in a train depicted similar RTT values as when the sleeping NIC delay is not present. After these observations we defined our baseline to be 100 msec inter-train spacing and 3 pings per train. Figure \ref{image:Avg_RTT_Three_Pings} illustrates the values for the average round trip time of three pings in a train. The inter-ping spacing is equally distributed among the number of pings in a train and the inter-train spacing. For example, the inter-ping spacing value for 3 pings in a 100 msec inter-train series is 100 msec/3 or ~33.33 msec.
+\subsection*{In-Office Lab}
 
+The In-office lab was mainly used to work on finding the probing rate to be used in the experiments at remote lab we worked with. The setup at our office is primarily composed by the following elements.
+
+\begin{enumerate}
+	\item Raspberry Pi 3 running Raspbian GNU/Linux 8 (Jessie)
+	\item Wireless Access Point TP-Link AC1750
+	\item Dell Laptop Inspiron running Ubuntu 16.04.4 LTS (Xenial Xerus)
+\end{enumerate}
+	
+	The wireless card driver on the Dell Laptop supported 802.11 a/b/g/n/ac. The driver is \textit{iwlwifi} version 4.4.0-130-generic and firmware=17.948900127.0. At the In-Office lab we setup our deployment as illustrated in figure \ref{image:In_Office_Lab_Deployment}.
+	
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=8cm]{Three_Pings/Three_Pings_Avgs}
-	\caption{Average RTT for Three Ping Series}
-	\label{image:Avg_RTT_Three_Pings}
+	\includegraphics[width=8cm]{Deployment/In_Office_Lab}
+	\caption{In-Office Lab Deployment}
+	\label{image:In_Office_Lab_Deployment}
 \end{figure}
+		
+The Pi was the device from which we send the pings towards the Laptop. As illustrated in figure \ref{image:In_Office_Lab_Deployment} the Pi and access point are connected via Ethernet. The laptop is connected with the AP via 802.11n. During the tests at the In-lab office we switched between 2.4 and 5.0 GHz band depending on the goal of the experiment. The In-Office lab played a key role to test the features we included in our GoPing tool prior to running experiment at the remote lab.
 
-With this exercise we defined our baseline, we implemented similarity tests between our baseline results and samples derived from the baseline. We refer to our baseline as aggressive probing. To keep the samples to follow the same distribution as our baseline we implemented a Poisson process to generate the inter-train space intervals. In other words, randomly sampling from a Poisson process will result in another Poisson-distributed process \cite{raikov_decomposition}. This feature has been included in our GoPing tool. We sampled our baseline to obtain from 10\% to 90 \% of our original data points. We implemented Bernoulli random sampling to extract our samples. Finally, we ran Two-sample Kolmogorov-Smirnov tests between our baseline and samples. From the results we noticed that the sample which delivers a similar ECDF to our baseline is the one that keeps 50\% of the original baseline data points. Figure \ref{image:ECDF_aggressive_vs_sampling} illustrates both ECDFs.
+\subsection*{Orbit Lab}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=8cm]{ECDF_Similarity/Aggressive_vs_Sample_Probing}
-	\caption{ECDF - Aggressive Probing vs Sample}
-	\label{image:ECDF_aggressive_vs_sampling}
-\end{figure}
+The second testbed we work with is Orbit Lab \cite{orbit2005}. Orbit lab is a large testbed in which different Wireless technologies can be tested. One of these Wireless technologies is 802.11. Within Orbit Lab we work with Sandbox 4 (SB4) which includes features to vary the attenuation between the nodes in the Sandbox. The main components of SB4 we work with are the followings.
 
-From figure \ref{image:ECDF_aggressive_vs_sampling} the overlap between the sample keeping 50\% of original data points and the original baseline derived from aggressive probing can be seen. This was the sample in which the overlap occurred, based on this result we obtained our probing rate. As the RTT ECDF of the sample with half of the original data is similar to the original baseline, we set our probing rate to be 200 msec. To validate our chosen probing rate still holds in our testbed we tested it. The tests consisted in sending as many batches as possible for 10 min at 100 and 200 msec probing rates. Additionally we varied the attenuation with values of 0, 15 and 30 dBm. Table \ref{table:Att_Rate_Test_Values} summarizes the values used for the test. The test sessions took place in the 2.4 GHz band using 802.11n WLAN with no authentication. We ran each experiment session 5 times, in total we obtained 30 samples.
+\begin{enumerate}
+	\item SB4 has 9 nodes, each one of them runs Ubuntu 12.04
+	\item Attenuation Controller which makes possible to vary the attenuation between the nodes.
+\end{enumerate}
+
+Each of the nodes has an Atheros Wireless card, the models are Atheros 5K and 9K. The nodes we work with have Atheros chipsets which allow us to collect detailed WiFi logs. The links between the nodes in SB4 can be set to attenuation values between 0-30 dBm from the attenuation controller. The topology of SB4 depends on the attenuation values for each link. For example, a full-mesh topology is achieved when the attenuation value for all the links is set to 0 dBm. Thanks to the attenuation controller we can set experiments in which changes on the RSSI are visible. The RSSI, as descried in section \ref{Wireless Monitoring Metrics}, is a metric which can help to identify attenuation impairments. The main deployment we use in  Orbit is similar to the deployment we have at the In-office lab. The node working as AP was setup using the \emph{hostapd} utility. The WLAN settings for the AP are summarized in table \ref{table:WLAN_Settings_AP_Node}.
 
 \begin{table}[h]
-\begin{center}
-	\begin{tabular}{||c c||}
-		\hline
-		Attenuation & Probing Rate\\ [0.5ex] 
-		\hline\hline
-		0 dBm & 100msec\\ 
-		\hline
-		0 dBm & 200msec\\
-		\hline
-		15 dBm & 100msec\\
-		\hline
-		15 dBm & 200msec\\
-		\hline
-		30 dBm & 100msec\\
-		\hline
-		30 dBm & 200msec\\ [1ex] 
-		\hline
-	\end{tabular}
-\end{center}
-\caption{Attenuation and Probing Rate Validation Values}
-\label{table:Att_Rate_Test_Values}
+	\begin{center}
+		\begin{tabular}{||c c||}
+			\hline
+			Setting & Value\\ [0.5ex] 
+			\hline\hline
+			802.11 Protocol & 802.11n\\ 
+			\hline
+			Channel Bonding & No\\
+			\hline
+			Band & 2.4 GHz\\
+			\hline
+			Security & Open\\ [1ex] 
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{WLAN Settings at AP Node}
+	\label{table:WLAN_Settings_AP_Node}
+\end{table} 
+
+
+\subsection{Experiments Setup}\label{Experiments_setup}
+
+Once our labs were setup we ran our experiments. During our experiment we collect active and passive metrics using a diverse set of tools. Most of the tools we work with are out-of-the-box tools, such as iPerf, tc and tcpdump. The active measurement tool we use to collect RTTs is a custom implementation of Ping in GoLang. We refer to this tool as \emph{GoPing}. We have customized GoPing to send ping trains and batches.
+To trigger WiFi and non-WiFi impairments we setup three main scenarios in Orbit SB4 testbed. Two of them, attenuation and congestion, are WiFi-related. The third one is an access link impairment. Across the three scenarios we let running the collection of active and passive measurements. Our experiment sessions last 10 min. Passive wireless metrics logs are collected every 10 secs at the AP and Wireless client. We also setup a wireless a sniffer to obtain Over-the-Air packet captures. From the wired client we send pings towards the AP and log the stats from GoPing. For the throughput measurement with iPerf, we setup iPerf server at the wireless node and the iPerf client at the wired node. iPerf was setup in TCP mode with 4 parallel TCP streams. We chose TCP as it is transport protocol most commonly used by services at home WiFi networks. We work with 4 parallel streams as within the home WiFi the number of TCP streams is in average below 5 TCP streams. \textbf{[We need a reference here]}.
+
+\subsection*{Attenuation}\label{attenuation}
+
+To trigger attenuation impairments in the testbed we vary the attenuation at the link between the wireless client and the access point. As mentioned before the setup we use at SB4 in Orbit is similar to our In-Office lab which is illustrated in figure \ref{image:In_Office_Lab_Deployment}. The additional component to this setup is the node working as a wireless sniffer. The attenuation impairment happens in the 3\textsuperscript{rd} and 9\textsuperscript{th} minute of the 10 min session. The experiment is designed this way to set a comparison between impairment-free and impairment conditions. We setup 5 scenarios with an increase of 3 dBm per impairment interval. Table \ref{table:Attenuation_Experiment_Values} breakdowns the scenarios and the attenuation levels for each impairment interval. We ran each experiment 5 times.
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|| m{5em} | m{2cm}| m{2cm} ||}
+			\hline
+			\multirow{2}{*}{Scenario} & \multicolumn{2}{c||}{Attenuation Value {[}dBm{]}} \\ \cline{2-3} 
+			& \multicolumn{1}{l|}{1st Interval} & \multicolumn{1}{l||}{2nd Interval} \\ \hline\hline
+			1 & 3 & 6 \\ \hline
+			2 & 9 & 12 \\ \hline
+			3 & 15 & 18 \\ \hline
+			4 & 21 & 24 \\ \hline
+			5 & 27 & 30 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Attenuation Scenarios and Values}
+	\label{table:Attenuation_Experiment_Values}
 \end{table}
 
-We compared the RTT ECDF of both rates as before to check similarity between probing rates. The expectation was for curves to be similar to each other. As expected, figure \ref{image:att_0_100and200msec} illustrates the similarity between both RTT ECDF probing rates.
+\subsection*{Congestion}\label{congestion}
+
+To trigger congestion in our testbed, we connect more wireless clients to the same AP our main wireless client is connecting to. At the 4\textsuperscript{th} and 8\textsuperscript{th} minute we connect an additional wireless clients to the AP. The additional wireless clients send UDP traffic to the AP using iPerf, hence the AP is running an iPerf server instance. We increase by one the wireless nodes connecting to the AP per interval. Table \ref{table:Congestion_Experiment_Values} consolidates the scenarios and number of wireless nodes connecting to the AP per interval.
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|| m{5em} | m{2cm}| m{2cm} ||}
+			\hline
+			\multirow{2}{*}{Scenario} & \multicolumn{2}{l||}{Connected Wireless Nodes} \\ \cline{2-3} 
+			& \multicolumn{1}{l|}{1st Interval} & \multicolumn{1}{l||}{2nd Interval} \\ \hline\hline
+			1 & 1 & 1 \\ \hline
+			2 & 2 & 2 \\ \hline
+			3 & 3 & 3 \\ \hline
+			4 & 4 & 4 \\ \hline
+			5 & 5 & 5 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Congestion Scenarios and Values}
+	\label{table:Congestion_Experiment_Values}
+\end{table}
+
+\subsection*{Access Link Limiting}\label{access_link}
+
+The third scenario triggers a non-WiFi impairment. The experiment consists in limiting the access link capacity at the Wired node. We achieve limiting at the wired node by using \emph{tc}, a traffic shaper utility. In a similar way to the attenuation scenario, we trigger the impairment conditions at the 3\textsuperscript{rd} and 9\textsuperscript{th} minute of the 10 min experiment window. Table \ref{table:Access_Link_Experiment_Values} details the scenarios and values for the Access Link Limiting scenario.
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|| m{5em} | m{2cm}| m{2cm} ||}
+			\hline
+			\multirow{2}{*}{Scenario} & \multicolumn{2}{c||}{Throughput {[}Mbps{]}} \\ \cline{2-3} 
+			& \multicolumn{1}{l|}{1st Interval} & \multicolumn{1}{l||}{2nd Interval} \\ \hline\hline
+			1 & 100 & 90 \\ \hline
+			2 & 80 & 70 \\ \hline
+			3 & 60 & 50 \\ \hline
+			4 & 40 & 30 \\ \hline
+			5 & 20 & 10 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Access Link Limiting Scenarios and Values}
+	\label{table:Access_Link_Experiment_Values}
+\end{table}
+
+\subsection{RSSI in the wild}\label{rsssi_in_the_wild}
+
+With regards to the attenuation scenario we ran a survey to find the common RSSI value in home and office environments. We asked the colleagues at our office to run a script which collects WiFi metrics on their laptops at different times during their stay at home or office. From the 760 samples collected we found that the most common RSSI value ranges between -60 and -65 dBm. Figure \ref{fig:RSSI_Histogram} illustrates the RSSI histogram of our survey.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=8cm]{Rates_Atts/Att_0dBRate[100,200]msec}
-	\caption{Att. 0 dBm - Rate 100,200 msec}
-	\label{image:att_0_100and200msec}
+	\includegraphics[width=8cm]{RSSI_Stats/RSSI_Histogram}
+	\caption{RSSI Survey Values Histogram}
+	\label{fig:RSSI_Histogram}
 \end{figure}
 
-The next expected behavior was for RTT to increase as the attenuation values increases. Figure \ref{image:rate_200msec_Att_0_15_30dBm} help us to validate the expected behavior. As we increase attenuation, RTT increases.
+The main goal of this exercise is to validate attenuation values to be used in our experiments. In Orbit SB4 testbed, attenuation values of 0, 3 and 6 [dBm] lead to RSSI values between -60 and -65 dBm, which is the range obtained from our survey. These values are included in the attenuation experiments we ran.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=8cm]{Rates_Atts/Rate200msecAtt_[0,15,30]dB}
-	\caption{Rate 200 msec - Att. [0,15,30] dB}
-	\label{image:rate_200msec_Att_0_15_30dBm}
-\end{figure}
+\subsection{Classification tool}
 
+After completing our experiments we moved on to the classification phase. To classify our events we use \emph{Weka}. Weka is a software which has different supervised learning algorithms. We work with three algorithms available in Weka, J.48, AdaboostM1 and random forest. To train Weka we feed it with the dataset derived from our experiments. Our experiments are designed in a way in which each impairment happens during a specific interval within the 10 min experiment window. Therefore we know at which interval does the impairment occurs. In other words, each experiment session consists in 10 intervals, each one 60 sec long. Depending on the scenario; congestion, attenuation or access link, we trigger the impairment at a specific interval as described in Section \ref{Experiments_setup}.
 \newpage
+
+
+
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.18)  22 AUG 2018 18:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.18)  22 AUG 2018 22:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -425,13 +425,12 @@ Overfull \hbox (17.38745pt too wide) in paragraph at lines 94--95
 []\T1/aer/m/n/10 In a sim-i-lar way as for ac-tively mea-sur-ing through-
  []
 
-) (./chapters/03_Wireless_Bottleneck_Detector.tex [3]
-<Images/Three_Pings/Three_Pings_Avgs.png, id=20, 462.528pt x 346.896pt>
+[3] <Images/Three_Pings/Three_Pings_Avgs.png, id=20, 462.528pt x 346.896pt>
 File: Images/Three_Pings/Three_Pings_Avgs.png Graphic file (type png)
 
 <use Images/Three_Pings/Three_Pings_Avgs.png>
 Package pdftex.def Info: Images/Three_Pings/Three_Pings_Avgs.png used on input 
-line 13.
+line 116.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 
 <Images/ECDF_Similarity/Aggressive_vs_Sample_Probing.png, id=22, 462.528pt x 34
@@ -440,7 +439,7 @@ File: Images/ECDF_Similarity/Aggressive_vs_Sample_Probing.png Graphic file (typ
 e png)
  <use Images/ECDF_Similarity/Aggressive_vs_Sample_Probing.png>
 Package pdftex.def Info: Images/ECDF_Similarity/Aggressive_vs_Sample_Probing.pn
-g used on input line 22.
+g used on input line 125.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 
 
@@ -452,7 +451,7 @@ File: Images/Rates_Atts/Att_0dBRate[100,200]msec.png Graphic file (type png)
 
 <use Images/Rates_Atts/Att_0dBRate[100,200]msec.png>
 Package pdftex.def Info: Images/Rates_Atts/Att_0dBRate[100,200]msec.png used on
- input line 57.
+ input line 162.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 
 
@@ -464,54 +463,43 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Images/Rates_Atts/Rate200msecAtt_[0,15,30]dB.png Graphic file (type png)
  <use Images/Rates_Atts/Rate200msecAtt_[0,15,30]dB.png>
 Package pdftex.def Info: Images/Rates_Atts/Rate200msecAtt_[0,15,30]dB.png used 
-on input line 66.
+on input line 171.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4 <./Images/Three_Pings/Three_Pings_Avgs.png> <./Images/ECDF_Similarity/Aggres
-sive_vs_Sample_Probing.png>]) (./chapters/04_Evaluation_Method.tex
+sive_vs_Sample_Probing.png>]) (./chapters/03_Wireless_Bottleneck_Detector.tex
+Overfull \hbox (6.12881pt too wide) in paragraph at lines 3--4
+[]\T1/aer/m/n/10 We strive to de-tect Home WiFi im-pair-ments, to achieve
+ []
+
 <Images/Deployment/In_Office_Lab.png, id=30, 643.34471pt x 194.84558pt>
 File: Images/Deployment/In_Office_Lab.png Graphic file (type png)
 
 <use Images/Deployment/In_Office_Lab.png>
 Package pdftex.def Info: Images/Deployment/In_Office_Lab.png used on input line
- 19.
+ 23.
 (pdftex.def)             Requested size: 227.62204pt x 68.93727pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5 <./Images/Rates_Atts/Att_0dBRate[100,200]msec.png> <./Images/Rates_Atts/Rate
-200msecAtt_[0,15,30]dB.png> <./Images/Deployment/In_Office_Lab.png>]
-Overfull \hbox (4.23051pt too wide) in paragraph at lines 60--61
-\T1/aer/m/n/10 them, at-ten-u-a-tion and con-ges-tion, are WiFi-related. The
- []
-
-
-Overfull \hbox (9.37468pt too wide) in paragraph at lines 60--61
-\T1/aer/m/n/10 iPerf was setup in TCP mode with 4 par-al-lel TCP streams.
- []
-
-
-Overfull \hbox (1.15668pt too wide) in paragraph at lines 106--107
+ [5 <./Images/Rates_Atts/Att_0dBRate[100,200]msec.png> <./Images/Rates_Atts/Rat
+e200msecAtt_[0,15,30]dB.png> <./Images/Deployment/In_Office_Lab.png>]
+Overfull \hbox (1.15668pt too wide) in paragraph at lines 111--112
 \T1/aer/m/n/10 The third sce-nario trig-gers a non-WiFi im-pair-ment. The
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Images/RSSI_Stats/RSSI_Histogram.png, id=36, 462.528pt x 346.896pt>
+[6] <Images/RSSI_Stats/RSSI_Histogram.png, id=40, 462.528pt x 346.896pt>
 File: Images/RSSI_Stats/RSSI_Histogram.png Graphic file (type png)
 
 <use Images/RSSI_Stats/RSSI_Histogram.png>
 Package pdftex.def Info: Images/RSSI_Stats/RSSI_Histogram.png used on input lin
-e 131.
+e 136.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
- [6])
-(./chapters/02_Background_Related_Work.tex [7 <./Images/RSSI_Stats/RSSI_Histogr
-am.png>]) (./chapters/05_Results.tex
+ [7 <./Images/RSSI_Stats/RSSI_Histogram.png>]) (./chapters/04_Evaluation_Method
+.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--8
 []|\T1/aer/m/n/10 Attribute-
  []
@@ -526,44 +514,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--8
 []|\T1/aer/m/n/10 Incorrectly
  []
 
-
-Overfull \hbox (256.76482pt too wide) in paragraph at lines 5--18
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
+[8]) (./chapters/02_Background_Related_Work.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
-(./home-diagnosis.bbl) [9] (./home-diagnosis.aux) ) 
+)
+(./chapters/05_Results.tex [9]) (./home-diagnosis.bbl) [10]
+(./home-diagnosis.aux) ) 
 Here is how much of TeX's memory you used:
- 3872 strings out of 494910
- 49951 string characters out of 6179836
- 141587 words of memory out of 5000000
- 6999 multiletter control sequences out of 15000+600000
+ 3877 strings out of 494910
+ 50027 string characters out of 6179836
+ 136637 words of memory out of 5000000
+ 7004 multiletter control sequences out of 15000+600000
  47344 words of font info for 60 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,11n,28p,1958b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-di
-st/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/urw/times/utmr8a.pfb>
-Output written on home-diagnosis.pdf (9 pages, 521687 bytes).
+ 41i,11n,28p,1958b,263s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.
+enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on home-diagnosis.pdf (10 pages, 522650 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
