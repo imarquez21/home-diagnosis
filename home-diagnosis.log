@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.18)  23 AUG 2018 09:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.18)  23 AUG 2018 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -444,23 +444,19 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 22.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-(./chapters/00_Abstract.tex) (./chapters/01_Introduction.tex
-Overfull \hbox (5.59695pt too wide) in paragraph at lines 2--1
-\ninept ments trig-ger-ing Wire-less and non-wireless is-sues in a testbed.
- []
-
-
-Overfull \hbox (1.86607pt too wide) in paragraph at lines 2--1
-\ninept less met-rics col-lec-tion from Wire-less AP and Wire-less Client.
- []
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(./chapters/00_Abstract.tex) (./chapters/01_Introduction.tex [1{/var/lib/texmf/
+fonts/map/pdftex/updmap/pdftex.map}
 
 
 ])
-(./chapters/02_1_Wireless_Monitoring_Metrics.tex [2]
-Overfull \hbox (8.51802pt too wide) in paragraph at lines 88--89
-\T1/aer/m/n/10 speak Wi-Fi lan-guage" such as Mi-crowave ovens,
+(./chapters/02_1_Wireless_Monitoring_Metrics.tex
+Overfull \hbox (2.20723pt too wide) in paragraph at lines 14--15
+[]\T1/aer/m/n/10 Privacy con-cerns are min-i-mal as probe pack-ets used
+ []
+
+[2]
+Overfull \hbox (7.68808pt too wide) in paragraph at lines 88--89
+\T1/aer/m/n/10 speak Wi-Fi lan-guage" such as mi-crowave ovens,
  []
 
 
@@ -511,8 +507,8 @@ Overfull \hbox (30.23877pt too wide) in paragraph at lines 161--173
 
 [4 <./Images/Three_Pings/Three_Pings_Avgs.png> <./Images/ECDF_Similarity/Aggres
 sive_vs_Sample_Probing.png>]) (./chapters/03_Wireless_Bottleneck_Detector.tex
-Overfull \hbox (6.12881pt too wide) in paragraph at lines 3--4
-[]\T1/aer/m/n/10 We strive to de-tect Home WiFi im-pair-ments, to achieve
+Overfull \hbox (9.45877pt too wide) in paragraph at lines 3--4
+[]\T1/aer/m/n/10 We strive to de-tect Home Wi-Fi im-pair-ments, to achieve
  []
 
 <Images/Deployment/In_Office_Lab.png, id=30, 643.34471pt x 194.84558pt>
@@ -520,23 +516,16 @@ File: Images/Deployment/In_Office_Lab.png Graphic file (type png)
 
 <use Images/Deployment/In_Office_Lab.png>
 Package pdftex.def Info: Images/Deployment/In_Office_Lab.png used on input line
- 24.
+ 23.
 (pdftex.def)             Requested size: 227.62204pt x 68.93727pt.
  [5 <./Images/Rates_Atts/Att_0dBRate[100,200]msec.png> <./Images/Rates_Atts/Rat
-e200msecAtt_[0,15,30]dB.png> <./Images/Deployment/In_Office_Lab.png>]
-Overfull \hbox (1.15668pt too wide) in paragraph at lines 111--112
-\T1/aer/m/n/10 The third sce-nario trig-gers a non-WiFi im-pair-ment. The
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6] <Images/RSSI_Stats/RSSI_Histogram.png, id=41, 462.528pt x 346.896pt>
+e200msecAtt_[0,15,30]dB.png> <./Images/Deployment/In_Office_Lab.png>] [6]
+<Images/RSSI_Stats/RSSI_Histogram.png, id=41, 462.528pt x 346.896pt>
 File: Images/RSSI_Stats/RSSI_Histogram.png Graphic file (type png)
 
 <use Images/RSSI_Stats/RSSI_Histogram.png>
 Package pdftex.def Info: Images/RSSI_Stats/RSSI_Histogram.png used on input lin
-e 136.
+e 135.
 (pdftex.def)             Requested size: 227.62204pt x 170.71628pt.
 )
 (./chapters/04_Evaluation_Method.tex
@@ -558,13 +547,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--8
 (./chapters/02_Background_Related_Work.tex) (./chapters/05_Results.tex [8])
 (./home-diagnosis.bbl) [9] (./home-diagnosis.aux) ) 
 Here is how much of TeX's memory you used:
- 5056 strings out of 494910
- 70967 string characters out of 6179836
- 159802 words of memory out of 5000000
- 8165 multiletter control sequences out of 15000+600000
+ 5057 strings out of 494910
+ 70979 string characters out of 6179836
+ 159812 words of memory out of 5000000
+ 8166 multiletter control sequences out of 15000+600000
  50406 words of font info for 66 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,11n,39p,1958b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,39p,2042b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-di
 st/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
@@ -576,7 +565,7 @@ e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb>
-Output written on home-diagnosis.pdf (9 pages, 528942 bytes).
+Output written on home-diagnosis.pdf (9 pages, 528610 bytes).
 PDF statistics:
  87 PDF objects out of 1000 (max. 8388607)
  54 compressed objects within 1 object stream
