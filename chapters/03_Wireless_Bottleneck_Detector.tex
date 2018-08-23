@@ -1,6 +1,6 @@
 \section{Wireless Bottleneck Detector}\label{Wireless Bottleneck Detector}
 
-We strive to detect Home WiFi impairments, to achieve our goal we model our detector with as a classification problem. To train our model we ran experiments in a testbed and trigger WiFi impairments during the experiment window. From the experiments we collect the metrics described in Section \ref{Wireless Monitoring Metrics} and create dataset derived from them. Finally we consolidate our datasets and feed them into a supervised learning tool. 
+We strive to detect Home WiFi impairments, to achieve our goal we model our detector as a classification problem. To train our model we ran experiments in a testbed and trigger WiFi impairments during the experiment window. From the experiments we collect the metrics described in Section \ref{Wireless Monitoring Metrics} and create dataset derived from them. Finally we consolidate our datasets and feed them into a supervised learning tool. 
 
 \subsection{Labs Setup}
 
@@ -16,7 +16,8 @@ The In-office lab was mainly used to work on finding the probing rate to be used
 	\item Dell Laptop Inspiron running Ubuntu 16.04.4 LTS (Xenial Xerus)
 \end{enumerate}
 	
-	The wireless card driver on the Dell Laptop supported 802.11 a/b/g/n/ac. The driver is \textit{iwlwifi} version 4.4.0-130-generic and firmware=17.948900127.0. At the In-Office lab we setup our deployment as illustrated in figure \ref{image:In_Office_Lab_Deployment}.
+	The wireless card driver on the Dell Laptop supported 802.11 a/b/g/n/ac. The driver is \textit{iwlwifi} version 4.4.0-130-generic and firmware=17.948900127.0. At the In-Office lab we setup our deployment as illustrated in figure \ref{image:In_Office_Lab_Deployment}. The Pi was the device from which we send the pings towards the Laptop. As illustrated in figure \ref{image:In_Office_Lab_Deployment} the Pi and access point are connected via Ethernet. The laptop is connected with the AP via 802.11n. During the tests at the In-lab office we switched between 2.4 and 5.0 GHz band depending on the goal of the experiment. The In-Office lab played a key role to test the features we included in our GoPing tool prior to running experiment at the remote lab.
+	
 	
 \begin{figure}[h]
 	\centering
@@ -25,7 +26,6 @@ The In-office lab was mainly used to work on finding the probing rate to be used
 	\label{image:In_Office_Lab_Deployment}
 \end{figure}
 		
-The Pi was the device from which we send the pings towards the Laptop. As illustrated in figure \ref{image:In_Office_Lab_Deployment} the Pi and access point are connected via Ethernet. The laptop is connected with the AP via 802.11n. During the tests at the In-lab office we switched between 2.4 and 5.0 GHz band depending on the goal of the experiment. The In-Office lab played a key role to test the features we included in our GoPing tool prior to running experiment at the remote lab.
 
 \subsection*{Orbit Lab}
 
@@ -143,7 +143,7 @@ The main goal of this exercise is to validate attenuation values to be used in o
 \subsection{Classification tool}
 
 After completing our experiments we moved on to the classification phase. To classify our events we use \emph{Weka}. Weka is a software which has different supervised learning algorithms. We work with three algorithms available in Weka, J.48, AdaboostM1 and random forest. To train Weka we feed it with the dataset derived from our experiments. Our experiments are designed in a way in which each impairment happens during a specific interval within the 10 min experiment window. Therefore we know at which interval does the impairment occurs. In other words, each experiment session consists in 10 intervals, each one 60 sec long. Depending on the scenario; congestion, attenuation or access link, we trigger the impairment at a specific interval as described in Section \ref{Experiments_setup}.
-\newpage
+
 
 
 

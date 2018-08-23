@@ -155,21 +155,21 @@ After finding the active probing rate as described in Section \ref{probing_rate}
 	\label{table:Att_Rate_Test_Values}
 \end{table}
 
-We compared the RTT ECDF of both rates as before to check similarity between probing rates. The expectation was for curves to be similar to each other. As expected, figure \ref{image:att_0_100and200msec} illustrates the similarity between both RTT ECDF probing rates.
+We compared the RTT ECDF of both rates as before to check similarity between probing rates. The expectation was for curves to be similar to each other. As expected, figure \ref{fig:att_0_100and200msec} illustrates the similarity between both RTT ECDF probing rates. The next expected behavior was for RTT to increase as the attenuation values increases. Figure \ref{fig:rate_200msec_Att_0_15_30dBm} help us to validate the expected behavior. As we increase attenuation, RTT increases.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=8cm]{Rates_Atts/Att_0dBRate[100,200]msec}
-	\caption{Att. 0 dBm - Rate 100,200 msec}
-	\label{image:att_0_100and200msec}
-\end{figure}
-
-The next expected behavior was for RTT to increase as the attenuation values increases. Figure \ref{image:rate_200msec_Att_0_15_30dBm} help us to validate the expected behavior. As we increase attenuation, RTT increases.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=8cm]{Rates_Atts/Rate200msecAtt_[0,15,30]dB}
-	\caption{Rate 200 msec - Att. [0,15,30] dB}
-	\label{image:rate_200msec_Att_0_15_30dBm}
-\end{figure}
+\begin{figure*}[t]
+	\begin{subfigure}[t]{.53\textwidth}
+		\centering
+		\includegraphics[width=.9\textwidth]{Rates_Atts/Att_0dBRate[100,200]msec}
+		\caption{Att. 0 dBm - Rate 100,200 msec}
+		\label{fig:att_0_100and200msec}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{.53\textwidth}
+		\centering
+		\includegraphics[width=.9\textwidth]{Rates_Atts/Rate200msecAtt_[0,15,30]dB}
+		\caption{Rate 200 msec - Att. [0,15,30] dB}
+		\label{fig:rate_200msec_Att_0_15_30dBm}
+	\end{subfigure}
+	\caption{RTT ECDFs for Attenuation and Probing Rate in Testbed}
+\end{figure*}
 \newpage
